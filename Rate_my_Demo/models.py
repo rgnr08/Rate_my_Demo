@@ -74,12 +74,12 @@ class Genre(models.Model):
 
 class RateMyDemoUser(models.Model):
     user = models.OneToOneField(User)
-    thumbnail = models.ImageField(upload_to=MEDIA_ROOT, height_field=None, width_field=None, max_length=100, default='/media/user_default.jpg') # I wonder if this makes any sense...
+    thumbnail = models.ImageField(upload_to='thumbnail/', height_field=None, width_field=None, max_length=100, default='/media/user_default.jpg') # I wonder if this makes any sense...
     favourite_genres = models.ManyToManyField(Genre)                       # Not right, this should be many to many...
     location = models.CharField(max_length=128, blank=True)
-    favourites = models.ManyToManyField('Demo', related_name='favs+')
-    uploaded_demos = models.ManyToManyField('Demo', related_name='uploaded+')
-    is_artist = models.BooleanField()
+    favourites = models.ManyToManyField('Demo', related_name='favs+', blank=True)
+    uploaded_demos = models.ManyToManyField('Demo', related_name='uploaded+', blank=True)
+    artist = models.BooleanField()
 
     def __unicode__(self):
         return self.user.username
@@ -89,25 +89,17 @@ class RateMyDemoUser(models.Model):
 
 
 class Demo(models.Model):
+
     name = models.CharField(max_length=128)
+    file = models.FileField(upload_to='demos/')
     duration = models.IntegerField(max_length=1000)
     upload_time = models.DateTimeField(auto_now_add=True)
     uploader = models.ForeignKey(RateMyDemoUser)
-    artwork = models.ImageField(upload_to=MEDIA_ROOT, height_field=None, width_field=None, max_length=100, default='/media/albumart_default.jpg') # I wonder if this makes any sense...
-    up_votes = models.IntegerField(editable=False)
-    down_votes = models.IntegerField(editable=False)
+    artwork = models.ImageField(upload_to='artwork', height_field=None, width_field=None, max_length=100, default='/media/albumart_default.jpg') # I wonder if this makes any sense...
+    up_votes = models.IntegerField(editable=False, blank=True, null=True)
+    down_votes = models.IntegerField(editable=False, blank=True, null=True)
     genre = models.ManyToManyField(Genre)
+    is_thumbs_up = models.BooleanField()
 
     def __unicode__(self):
         return self.name
-
-
-class Rating(models.Model):
-    user = models.ForeignKey(RateMyDemoUser)
-    demo = models.ForeignKey(Demo)
-    up_votes = models.IntegerField(editable=False)
-    down_votes = models.IntegerField(editable=False)
-    is_thumbs_up = models.BooleanField() # how to map this to the up and down votes?
-
-    def __unicode__(self):
-        return self.name.username
