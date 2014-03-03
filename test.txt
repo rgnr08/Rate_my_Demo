@@ -1,1 +1,4 @@
-dfgwsergtest
+QUESTIONS:
+
+- Is it a problem that the project is called differently from the app?
+- How to work with the user thing if I want to add a model?
