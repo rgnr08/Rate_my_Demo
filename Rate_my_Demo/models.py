@@ -1,6 +1,5 @@
 from django.db import models
 from django.contrib.auth.models import User
-from tango_with_django_project.settings import MEDIA_ROOT
 
 
 class Genre(models.Model):
@@ -68,13 +67,10 @@ class Genre(models.Model):
     def __unicode__(self):
         return self.genre
 
-    def is_upperclass(self):
-        return self.genre
-
 
 class RateMyDemoUser(models.Model):
     user = models.OneToOneField(User)
-    thumbnail = models.ImageField(upload_to='thumbnail/', height_field=None, width_field=None, max_length=100, default='/media/user_default.jpg') # I wonder if this makes any sense...
+    thumbnail = models.ImageField(upload_to='thumbnail', blank=True) # I wonder if this makes any sense...
     favourite_genres = models.ManyToManyField(Genre)                       # Not right, this should be many to many...
     location = models.CharField(max_length=128, blank=True)
     favourites = models.ManyToManyField('Demo', related_name='favs+', blank=True)

@@ -1,7 +1,6 @@
 from django.http import HttpResponse
 from django.template import RequestContext
 from django.shortcuts import render_to_response
-from Rate_my_Demo.models import RateMyDemoUser, Demo
 from Rate_my_Demo.forms import UserForm, RateMyDemoUserForm
 
 
@@ -48,6 +47,8 @@ def register(request):
         user_form = UserForm(data=request.POST)
         profile_form = RateMyDemoUserForm(data=request.POST)
 
+
+
         # If the two forms are valid...
         if user_form.is_valid() and profile_form.is_valid():
             # Save the user's form data to the database.
@@ -85,11 +86,11 @@ def register(request):
     # These forms will be blank, ready for user input.
     else:
         user_form = UserForm()
-        profile_form = UserProfileForm()
+        profile_form = RateMyDemoUserForm()
 
     # Render the template depending on the context.
     return render_to_response(
-            'rango/register.html',
+            'Rate_my_Demo/register.html',
             {'user_form': user_form, 'profile_form': profile_form, 'registered': registered},
             context)
 
