@@ -1,6 +1,9 @@
 from django.http import HttpResponse
 from django.template import RequestContext
 from django.shortcuts import render_to_response
+from Rate_my_Demo.models import RateMyDemoUser, Demo
+
+
 
 def index(request):
     # Request the context of the request
@@ -27,3 +30,7 @@ def about(request):
 
     #return HttpResponse("Rango says: here is the about page blood! <a href='/rango/'>Index</a>")
     return render_to_response('Rate_my_Demo/about.html')
+
+def rate_my_demo_user(request):
+
+    context = RequestContext(request)
