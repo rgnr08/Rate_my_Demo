@@ -91,7 +91,8 @@ class Demo(models.Model):
     duration = models.IntegerField(max_length=1000)
     upload_time = models.DateTimeField(auto_now_add=True)
     uploader = models.ForeignKey(RateMyDemoUser)
-    artwork = models.ImageField(upload_to='artwork', height_field=None, width_field=None, max_length=100, default='/media/albumart_default.jpg') # I wonder if this makes any sense...
+    artwork = models.ImageField(upload_to='artwork', height_field=None, width_field=None,
+                                max_length=100, default='/media/albumart_default.jpg') # I wonder if this makes any sense...
     up_votes = models.IntegerField(editable=False, blank=True, null=True)
     down_votes = models.IntegerField(editable=False, blank=True, null=True)
     genre = models.ManyToManyField(Genre)

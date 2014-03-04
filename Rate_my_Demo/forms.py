@@ -65,10 +65,19 @@ class UserForm(forms.ModelForm):
 
     class Meta:
         model = User
-        fields = ['username', 'email', 'password']
+        fields = ('username', 'email', 'password')
 
 
 class RateMyDemoUserForm(forms.ModelForm):
+    # genre = forms.ModelMultipleChoiceField(queryset=GENRE., widget=forms.CheckboxSelectMultiple)
     class Meta:
         model = RateMyDemoUser
-        fields = ['thumbnail', 'location', 'artist']
+        fields = ('thumbnail', 'location', 'artist')
+
+
+class DemoForm(forms.ModelForm):
+    upload_time = forms.TimeField()
+    class Meta:
+        model = Demo
+        fields = ('name', 'file', 'duration', 'upload_time', 'uploader', 'artwork',
+                'genre', 'is_thumbs_up' )

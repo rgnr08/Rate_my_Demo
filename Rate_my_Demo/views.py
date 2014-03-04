@@ -1,7 +1,7 @@
 from django.http import HttpResponse
 from django.template import RequestContext
 from django.shortcuts import render_to_response
-from Rate_my_Demo.forms import UserForm, RateMyDemoUserForm
+from Rate_my_Demo.forms import UserForm, RateMyDemoUserForm, DemoForm
 from django.contrib.auth import authenticate, login
 from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth.decorators import login_required
@@ -96,6 +96,53 @@ def register(request):
     return render_to_response(
             'Rate_my_Demo/register.html',
             {'user_form': user_form, 'profile_form': profile_form, 'registered': registered},
+            context)
+
+@login_required
+def upload(request):
+    # Like before, get the request's context.
+    context = RequestContext(request)
+
+    # A boolean value for telling the template whether the registration was successful.
+    # Set to False initially. Code changes value to True when registration succeeds.
+    uploaded = False
+
+    # If it's a HTTP POST, we're interested in processing form data.
+    if request.method == 'POST':
+        # Attempt to grab information from the raw form information.
+        # Note that we make use of both UserForm and UserProfileForm.
+        demo = DemoForm(data=request.POST)
+
+        # If the two forms are valid...
+        if DemoForm.is_valid(demo):
+
+            # Did the user provide a profile picture?
+            # If so, we need to get it from the input form and put it in the UserProfile model.
+            if 'artwork' in request.FILES and 'file' in request.FILES:
+                DemoForm.artwork = request.FILES['picture']
+                DemoForm.file = request.FILES['picture']
+
+                # Now we save the UserProfile model instance.
+                DemoForm.save(demo)
+
+            # Update our variable to tell the template registration was successful.
+            uploaded = True
+
+        # Invalid form or forms - mistakes or something else?
+        # Print problems to the terminal.
+        # They'll also be shown to the user.
+        else:
+            print DemoForm.errors
+
+    # Not a HTTP POST, so we render our form using two ModelForm instances.
+    # These forms will be blank, ready for user input.
+    else:
+        demo = DemoForm()
+
+    # Render the template depending on the context.
+    return render_to_response(
+            'Rate_my_Demo/upload.html',
+            {'demo' : demo, 'uploaded': uploaded },
             context)
 
 
