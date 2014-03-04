@@ -173,3 +173,5 @@ LOGGING = {
         },
     }
 }
+
+LOGIN_URL = '/Rate_my_Demo/login/'

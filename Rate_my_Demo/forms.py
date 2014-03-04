@@ -69,7 +69,6 @@ class UserForm(forms.ModelForm):
 
 
 class RateMyDemoUserForm(forms.ModelForm):
-
     class Meta:
         model = RateMyDemoUser
         fields = ['thumbnail', 'location', 'artist']

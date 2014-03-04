@@ -71,7 +71,7 @@ class Genre(models.Model):
 class RateMyDemoUser(models.Model):
     user = models.OneToOneField(User)
     thumbnail = models.ImageField(upload_to='thumbnail', blank=True) # I wonder if this makes any sense...
-    favourite_genres = models.ManyToManyField(Genre)                       # Not right, this should be many to many...
+    favourite_genres = models.ManyToManyField(Genre, blank=True)                       # Not right, this should be many to many...
     location = models.CharField(max_length=128, blank=True)
     favourites = models.ManyToManyField('Demo', related_name='favs+', blank=True)
     uploaded_demos = models.ManyToManyField('Demo', related_name='uploaded+', blank=True)
@@ -87,7 +87,7 @@ class RateMyDemoUser(models.Model):
 class Demo(models.Model):
 
     name = models.CharField(max_length=128)
-    file = models.FileField(upload_to='demos/')
+    file = models.FileField(upload_to='demos')
     duration = models.IntegerField(max_length=1000)
     upload_time = models.DateTimeField(auto_now_add=True)
     uploader = models.ForeignKey(RateMyDemoUser)
