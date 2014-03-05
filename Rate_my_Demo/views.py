@@ -120,7 +120,7 @@ def upload(request):
             # If so, we need to get it from the input form and put it in the UserProfile model.
             if 'artwork' in request.FILES and 'file' in request.FILES:
                 DemoForm.artwork = request.FILES['artwork']
-                DemoForm.file = request.FILES['demo']
+                DemoForm.file = request.FILES['file']
 
                 # Now we save the UserProfile model instance.
                 demo.save(demo)

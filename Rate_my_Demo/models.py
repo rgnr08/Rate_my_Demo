@@ -83,8 +83,8 @@ class RateMyDemoUser(models.Model):
     techno = models.NullBooleanField()
     dubstep = models.NullBooleanField()
     indie = models.NullBooleanField()
-    RnB = models.NullBooleanField()
-    Hiphop = models.NullBooleanField()
+    rnb = models.NullBooleanField()
+    hiphop = models.NullBooleanField()
 
 
 
@@ -97,17 +97,18 @@ class RateMyDemoUser(models.Model):
     def __unicode__(self):
         return self.user.username
 
-class Favourites(models.Model):
-    up_votes = models.One(editable=False, blank=True, null=True)
-    down_votes = models.IntegerField(editable=False, blank=True, null=True)
 
-    is_thumbs_up = models.BooleanField()
+class Favourites(models.Model):
+    demo = models.ForeignKey(Demo)
+    user
+    def __unicode__(self):
+        return self.demo
 
 class Demo(models.Model):
 
     name = models.CharField(max_length=128)
     file = models.FileField(upload_to='demos')
-    upload_time = models.DateTimeField(auto_now_add=True)
+    upload_time = models.DateTimeField(auto_now_add=True, editable=False)
     uploader = models.ForeignKey(RateMyDemoUser)
     artwork = models.ImageField(upload_to='artwork', default='/media/albumart_default.jpg', blank=True)
     up_votes = models.IntegerField(editable=False, blank=True, null=True)
@@ -124,8 +125,8 @@ class Demo(models.Model):
     techno = models.NullBooleanField()
     dubstep = models.NullBooleanField()
     indie = models.NullBooleanField()
-    RnB = models.NullBooleanField()
-    Hiphop = models.NullBooleanField()
+    rnb = models.NullBooleanField()
+    hiphop = models.NullBooleanField()
 
     is_thumbs_up = models.BooleanField()
 
