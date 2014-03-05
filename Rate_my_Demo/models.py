@@ -86,23 +86,12 @@ class RateMyDemoUser(models.Model):
     rnb = models.NullBooleanField()
     hiphop = models.NullBooleanField()
 
-
-
     location = models.CharField(max_length=128, blank=True)
-    favourites = models.ManyToManyField('Demo', related_name='favs+', blank=True)
-    uploaded_demos = models.ManyToManyField('Demo', related_name='uploaded+', blank=True)
-
     artist = models.BooleanField()
 
     def __unicode__(self):
         return self.user.username
 
-
-class Favourites(models.Model):
-    demo = models.ForeignKey(Demo)
-    user
-    def __unicode__(self):
-        return self.demo
 
 class Demo(models.Model):
 
@@ -128,7 +117,21 @@ class Demo(models.Model):
     rnb = models.NullBooleanField()
     hiphop = models.NullBooleanField()
 
-    is_thumbs_up = models.BooleanField()
 
     def __unicode__(self):
         return self.name
+
+class DemoTest(models.Model):
+    name = models.CharField(max_length=128)
+    file = models.FileField(upload_to='demos')
+
+    def __unicode__(self):
+        return self.name
+
+class Favourites(models.Model):
+
+    demo = models.ForeignKey(Demo,  related_name="DemoFav")
+    user = models.ForeignKey(RateMyDemoUser)
+
+    def __unicode__(self):
+        return self.demo

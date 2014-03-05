@@ -1,13 +1,11 @@
 from django.http import HttpResponse
 from django.template import RequestContext
 from django.shortcuts import render_to_response
-from Rate_my_Demo.forms import UserForm, RateMyDemoUserForm, DemoForm
+from Rate_my_Demo.forms import UserForm, RateMyDemoUserForm, DemoForm, DemoTestForm
 from django.contrib.auth import authenticate, login
 from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
-
-
 
 
 def index(request):
@@ -106,24 +104,30 @@ def upload(request):
     # A boolean value for telling the template whether the registration was successful.
     # Set to False initially. Code changes value to True when registration succeeds.
     uploaded = False
-
+    demo = DemoTestForm(data=request.POST)
     # If it's a HTTP POST, we're interested in processing form data.
+
     if request.method == 'POST':
         # Attempt to grab information from the raw form information.
         # Note that we make use of both UserForm and UserProfileForm.
-        demo = DemoForm(data=request.POST)
 
+        # print demo
         # If the two forms are valid...
-        if DemoForm.is_valid():
-
+        # if demo.is_valid():
+        if True:
+            print "something"
             # Did the user provide a profile picture?
             # If so, we need to get it from the input form and put it in the UserProfile model.
-            if 'artwork' in request.FILES and 'file' in request.FILES:
-                DemoForm.artwork = request.FILES['artwork']
-                DemoForm.file = request.FILES['file']
+            if 'file' in request.FILES:
+                print "something"
+                print demo.is_valid()
+                print demo.errors
+                # DemoForm.artwork = request.FILES['artwork']
+                DemoTestForm.file = request.FILES['file']
+
 
                 # Now we save the UserProfile model instance.
-                demo.save(demo)
+                demo.save()
 
             # Update our variable to tell the template registration was successful.
             uploaded = True
@@ -132,17 +136,17 @@ def upload(request):
         # Print problems to the terminal.
         # They'll also be shown to the user.
         else:
-            print DemoForm.errors
+            print DemoTestForm.errors
 
     # Not a HTTP POST, so we render our form using two ModelForm instances.
     # These forms will be blank, ready for user input.
     else:
-        demo = DemoForm()
+        demo = DemoTestForm()
 
     # Render the template depending on the context.
     return render_to_response(
             'Rate_my_Demo/upload.html',
-            {'demo' : demo, 'uploaded': uploaded },
+            {'demo': demo, 'uploaded': uploaded},
             context)
 
 
