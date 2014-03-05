@@ -77,6 +77,7 @@ class RateMyDemoUserForm(forms.ModelForm):
 
 class DemoForm(forms.ModelForm):
     upload_time = forms.TimeField()
+
     class Meta:
         model = Demo
         fields = ('name', 'file', 'duration', 'upload_time', 'uploader', 'artwork',

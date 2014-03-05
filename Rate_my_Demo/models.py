@@ -95,7 +95,7 @@ class Demo(models.Model):
                                 max_length=100, default='/media/albumart_default.jpg') # I wonder if this makes any sense...
     up_votes = models.IntegerField(editable=False, blank=True, null=True)
     down_votes = models.IntegerField(editable=False, blank=True, null=True)
-    genre = models.ManyToManyField(Genre)
+    genre = models.ManyToManyField(Genre, symmetrical=False)
     is_thumbs_up = models.BooleanField()
 
     def __unicode__(self):

@@ -114,16 +114,16 @@ def upload(request):
         demo = DemoForm(data=request.POST)
 
         # If the two forms are valid...
-        if DemoForm.is_valid(demo):
+        if DemoForm.is_valid():
 
             # Did the user provide a profile picture?
             # If so, we need to get it from the input form and put it in the UserProfile model.
             if 'artwork' in request.FILES and 'file' in request.FILES:
-                DemoForm.artwork = request.FILES['picture']
-                DemoForm.file = request.FILES['picture']
+                DemoForm.artwork = request.FILES['artwork']
+                DemoForm.file = request.FILES['demo']
 
                 # Now we save the UserProfile model instance.
-                DemoForm.save(demo)
+                demo.save(demo)
 
             # Update our variable to tell the template registration was successful.
             uploaded = True
