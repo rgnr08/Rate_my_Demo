@@ -4,5 +4,3 @@ QUESTIONS:
 - How to work with the user thing if I want to add a model?
 - why do we need to add both the User Model AND the UserProfile model
 - Superuser?
-
-bla
