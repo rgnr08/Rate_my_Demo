@@ -121,12 +121,8 @@ class Demo(models.Model):
     def __unicode__(self):
         return self.name
 
-class DemoTest(models.Model):
-    name = models.CharField(max_length=128)
-    file = models.FileField(upload_to='demos')
-
-    def __unicode__(self):
-        return self.name
+class Document(models.Model):
+    docfile = models.FileField(upload_to='demos/%Y/%m/%d')
 
 class Favourites(models.Model):
 

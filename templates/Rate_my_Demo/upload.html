@@ -7,26 +7,20 @@
     <body>
         <h1>Upload a new Demo!</h1>
 
-        {% if registered %}
-        Rate My Demo says: <strong>thank you for your upload!</strong>
-        <a href="/Rate_my_Demo/">Return to the homepage.</a><br />
-        {% else %}
-         Rate My Demo says: <strong>Upload demo!</strong><br />
+            Rate My Demo says: <strong>Upload demo!</strong><br />
 
-        <form id="demo" method="post" action="/Rate_my_Demo/upload/"
-                enctype="multipart/form-data">
+        <form id="demoform" action="Rate_my_Demo/upload" method="post" enctype="multipart/form-data">
 
             {% csrf_token %}
+			<p>{{ demoform.non_field_errors }}</p>
+			<p>{{ demoform.file.label_tag }} {{ demoform.file.help_text }}</p>
+			<p>
+				{{ demoform.file.errors }}
+				{{ demoform.file }}
+			</p>
+			<p><input type="submit" value="UUUload" /></p>
+		</form>
 
-            <!-- Display each form. The as_p method wraps each element in a paragraph
-                 (<p>) element. This ensures each element appears on a new line,
-                 making everything look neater. -->
-            {{ demo.as_p }}
+	</body>
 
-
-            <!-- Provide a button to click to submit the form. -->
-            <input type="submit" name="submit" value="Register" />
-        </form>
-        {% endif %}
-    </body>
 </html>

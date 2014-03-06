@@ -1,11 +1,13 @@
-from django.http import HttpResponse
 from django.template import RequestContext
 from django.shortcuts import render_to_response
-from Rate_my_Demo.forms import UserForm, RateMyDemoUserForm, DemoForm, DemoTestForm
+from Rate_my_Demo.forms import UserForm, RateMyDemoUserForm, DocumentForm
+from Rate_my_Demo.models import Document
 from django.contrib.auth import authenticate, login
 from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
+from django.core.urlresolvers import reverse
+
 
 
 def index(request):
@@ -96,58 +98,29 @@ def register(request):
             {'user_form': user_form, 'profile_form': profile_form, 'registered': registered},
             context)
 
-@login_required
-def upload(request):
-    # Like before, get the request's context.
-    context = RequestContext(request)
 
-    # A boolean value for telling the template whether the registration was successful.
-    # Set to False initially. Code changes value to True when registration succeeds.
-    uploaded = False
-    demo = DemoTestForm(data=request.POST)
-    # If it's a HTTP POST, we're interested in processing form data.
-
+def list(request):
+    # Handle file upload
     if request.method == 'POST':
-        # Attempt to grab information from the raw form information.
-        # Note that we make use of both UserForm and UserProfileForm.
+        form = DocumentForm(request.POST, request.FILES)
+        if form.is_valid():
+            newdoc = Document(docfile = request.FILES['docfile'])
+            newdoc.save()
 
-        # print demo
-        # If the two forms are valid...
-        # if demo.is_valid():
-        if True:
-            print "something"
-            # Did the user provide a profile picture?
-            # If so, we need to get it from the input form and put it in the UserProfile model.
-            if 'file' in request.FILES:
-                print "something"
-                print demo.is_valid()
-                print demo.errors
-                # DemoForm.artwork = request.FILES['artwork']
-                DemoTestForm.file = request.FILES['file']
-
-
-                # Now we save the UserProfile model instance.
-                demo.save()
-
-            # Update our variable to tell the template registration was successful.
-            uploaded = True
-
-        # Invalid form or forms - mistakes or something else?
-        # Print problems to the terminal.
-        # They'll also be shown to the user.
-        else:
-            print DemoTestForm.errors
-
-    # Not a HTTP POST, so we render our form using two ModelForm instances.
-    # These forms will be blank, ready for user input.
+            # Redirect to the document list after POST
+            #return HttpResponseRedirect(reverse('tango_with_django_project.Rate_my_Demo.views.list'))
     else:
-        demo = DemoTestForm()
+        form = DocumentForm() # A empty, unbound form
 
-    # Render the template depending on the context.
+    # Load documents for the list page
+    documents = Document.objects.all()
+
+    # Render list page with the documents and the form
     return render_to_response(
-            'Rate_my_Demo/upload.html',
-            {'demo': demo, 'uploaded': uploaded},
-            context)
+        'Rate_my_Demo/list.html',
+        {'documents': documents, 'form': form},
+        context_instance=RequestContext(request)
+    )
 
 
 def user_login(request):

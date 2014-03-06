@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.models import User
-from Rate_my_Demo.models import RateMyDemoUser, Demo, DemoTest
+from Rate_my_Demo.models import RateMyDemoUser, Document, Demo
 
 
 # GENRE = (
@@ -80,10 +80,7 @@ class DemoForm(forms.ModelForm):
                 'study', 'chillout', 'party', 'mood', 'rock', 'pop', 'country',
                 'metal', 'techno', 'dubstep', 'indie', 'rnb', 'hiphop')
 
-class DemoTestForm(forms.ModelForm):
-    class Meta:
-        model = DemoTest
-        fields = ('name', 'file')
-
-    def is_valid(self):
-        return True
+class DocumentForm(forms.Form):
+    docfile = forms.FileField(
+        label='Select a file'
+    )

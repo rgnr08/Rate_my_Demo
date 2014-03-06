@@ -16,14 +16,14 @@
     {% if user.is_authenticated %}
 <a href="/Rate_my_Demo/restricted/">Restricted Page</a><br />
 <a href="/Rate_my_Demo/logout/">Logout</a><br />
-<a href="/Rate_my_Demo/upload/">Upload</a><br />
+<a href="/Rate_my_Demo/list/">Upload</a><br />
 
 {% else %}
 <a href="/Rate_my_Demo/register/">Register Here</a><br />
 <a href="/Rate_my_Demo/login/">Login</a><br />
 {% endif %}
 
-<a href="/rango/about/">About</a><br/>
+<a href="/Rate_my_Demo/about/">About</a><br/>
     <img src="{% static "Stag.jpg" %}" alt="Hipster Stag" /><br /><!-- New line -->
 
 </body>
