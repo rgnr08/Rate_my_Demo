@@ -124,6 +124,20 @@ class Demo(models.Model):
 class Document(models.Model):
     docfile = models.FileField(upload_to='demos/%Y/%m/%d')
 
+    study = models.BooleanField()
+    chillout = models.BooleanField()
+    party = models.BooleanField()
+    mood =models.BooleanField()
+    rock = models.BooleanField()
+    pop = models.BooleanField()
+    country = models.BooleanField()
+    metal = models.BooleanField()
+    techno = models.BooleanField()
+    dubstep = models.BooleanField()
+    indie = models.BooleanField()
+    rnb = models.BooleanField()
+    hiphop = models.BooleanField()
+
     def __unicode__(self):
         return self.docfile
 

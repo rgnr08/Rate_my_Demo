@@ -83,6 +83,21 @@ class DemoForm(forms.ModelForm):
 class DocumentForm(forms.ModelForm):
     docfile = forms.FileField(label='Select a file')
 
+    study = forms.BooleanField()
+    chillout = forms.BooleanField()
+    party = forms.BooleanField()
+    mood =forms.BooleanField()
+    rock = forms.BooleanField()
+    pop = forms.BooleanField()
+    country = forms.BooleanField()
+    metal = forms.BooleanField()
+    techno = forms.BooleanField()
+    dubstep = forms.BooleanField()
+    indie = forms.BooleanField()
+    rnb = forms.BooleanField()
+    hiphop = forms.BooleanField()
+
     class Meta:
         model = Document
-        fields = ('docfile',)
+        fields = ('docfile', 'study', 'chillout', 'party', 'mood', 'rock', 'pop', 'country',
+                'metal', 'techno', 'dubstep', 'indie', 'rnb', 'hiphop',)
