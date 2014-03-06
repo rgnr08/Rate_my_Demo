@@ -80,7 +80,9 @@ class DemoForm(forms.ModelForm):
                 'study', 'chillout', 'party', 'mood', 'rock', 'pop', 'country',
                 'metal', 'techno', 'dubstep', 'indie', 'rnb', 'hiphop')
 
-class DocumentForm(forms.Form):
-    docfile = forms.FileField(
-        label='Select a file'
-    )
+class DocumentForm(forms.ModelForm):
+    docfile = forms.FileField(label='Select a file')
+
+    class Meta:
+        model = Document
+        fields = ('docfile',)
