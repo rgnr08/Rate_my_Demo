@@ -70,7 +70,8 @@ class UserForm(forms.ModelForm):
 class RateMyDemoUserForm(forms.ModelForm):
     class Meta:
         model = RateMyDemoUser
-        fields = ('thumbnail', 'location', 'artist')
+        fields = ('thumbnail', 'location', 'artist',  'study', 'chillout', 'party', 'mood', 'rock', 'pop', 'country',
+                'metal', 'techno', 'dubstep', 'indie', 'rnb', 'hiphop')
 
 
 class DemoForm(forms.ModelForm):
@@ -83,21 +84,7 @@ class DemoForm(forms.ModelForm):
 class DocumentForm(forms.ModelForm):
     docfile = forms.FileField(label='Select a file')
 
-    study = forms.BooleanField()
-    chillout = forms.BooleanField()
-    party = forms.BooleanField()
-    mood =forms.BooleanField()
-    rock = forms.BooleanField()
-    pop = forms.BooleanField()
-    country = forms.BooleanField()
-    metal = forms.BooleanField()
-    techno = forms.BooleanField()
-    dubstep = forms.BooleanField()
-    indie = forms.BooleanField()
-    rnb = forms.BooleanField()
-    hiphop = forms.BooleanField()
 
     class Meta:
         model = Document
-        fields = ('docfile', 'study', 'chillout', 'party', 'mood', 'rock', 'pop', 'country',
-                'metal', 'techno', 'dubstep', 'indie', 'rnb', 'hiphop',)
+        fields = ('docfile',)
