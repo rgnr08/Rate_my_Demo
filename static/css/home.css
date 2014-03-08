@@ -1,0 +1,48 @@
+@charset "UTF-8";
+/* CSS Document */
+
+body {
+	background-color:#666;
+}
+
+.top {	
+	background-color:#FFFFFF;
+	width:auto;
+	height:100px;	
+}
+
+.logo {
+	position:relative;
+	text-align:center;
+	margin-left:-10px;
+	margin-right:auto;
+	margin-top:auto;
+	display:block;
+	width:100%;
+	height:100%;
+}
+
+.navbar-header {
+	float:left;
+	padding:15px;
+	text-align:center;
+	width: 100%;
+}
+
+.navbar-brand {
+	float:none;
+}
+
+.border	{
+	width:auto;
+	height:1px;
+	border-style:solid;
+	border-color:#C41212;
+}
+
+.grid	{
+	margin-top:80px;
+	margin-left:310px;
+	margin-right:200px;
+}
+

@@ -126,7 +126,7 @@ def list(request):
 def user_login(request):
     # Like before, obtain the context for the user's request.
     context = RequestContext(request)
-
+    print "HERE1"
     # If the request is a HTTP POST, try to pull out the relevant information.
     if request.method == 'POST':
         # Gather the username and password provided by the user.
@@ -134,6 +134,8 @@ def user_login(request):
         username = request.POST['username']
         password = request.POST['password']
 
+        print username
+        print "HERE"
         # Use Django's machinery to attempt to see if the username/password
         # combination is valid - a User object is returned if it is.
         user = authenticate(username=username, password=password)
@@ -161,7 +163,7 @@ def user_login(request):
     else:
         # No context variables to pass to the template system, hence the
         # blank dictionary object...
-        return render_to_response('Rate_my_Demo/login.html', {}, context)
+        return render_to_response('Rate_my_Demo/login_page.html', {}, context)
 
 @login_required
 def restricted(request):
