@@ -131,10 +131,13 @@ def user_login(request):
     if request.method == 'POST':
         # Gather the username and password provided by the user.
         # This information is obtained from the login form.
+        print "HERE2"
         username = request.POST['username']
+        print "HERE3"
         password = request.POST['password']
 
         print username
+        print password
         print "HERE"
         # Use Django's machinery to attempt to see if the username/password
         # combination is valid - a User object is returned if it is.
