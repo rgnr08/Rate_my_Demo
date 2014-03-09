@@ -3,6 +3,9 @@
 
 .service {
        width: 33%;
+	   margin-top:5px;
+	   margin-left:auto;
+	   margin-right:auto;
        float: left;
        padding: 1px;
 	   width: 170px;
@@ -106,7 +109,6 @@ body {
        font-family: 'Exo 2', sans-serif; /* Google Font http://google.com/fonts */
        text-align: center;
        color: #999;
-       background: #444;
        -webkit-font-smoothing: antialiased;
 }
 

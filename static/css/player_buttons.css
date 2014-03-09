@@ -17,9 +17,10 @@
 }
 
 .glyphicon-refresh {
-	font-size:34px;
-	margin-top:10px;
+	font-size:40px;
+	margin-top:20px;
 	color:#FFF;
+	margin-left:-10px;
 }
 
 .randomizer	{

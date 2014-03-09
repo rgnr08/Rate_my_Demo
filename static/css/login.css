@@ -1,21 +1,48 @@
 
-#wrapper {
-position: relative;
+/* position of components*/
+.login_form {
+	width: 305px;
+	margin-top: 90px;
+	margin-left: auto;
+	margin-right: auto;
+	font-size: 16px;
+	position: relative;
+	color: #FFFFFF;
 }
 
-.login_form {
-	width:62%;
-	margin-top: 100px;
-	margin-left: auto;
-	font-size: 21px;
-	color: #FFFFFF;
-	}
-	
+/* placeholder formatting */
+::-webkit-input-placeholder { color: #4D4D4D; font-size: 16px;}
+::-moz-placeholder { color: #4D4D4D; font-size: 16px;} /* firefox 19+ */
+:-ms-input-placeholder { color: #4D4D4D; font-size: 16px; } /* ie */
+input:-moz-placeholder { color: #4D4D4D; font-size: 16px; }
 
+/* formatting for all input text */
+input[type="text"], [type="password"]
+{
+	width: 300px;
+	height: 35px;
+	border-style: solid;
+	border-width: 1px;
+    border-radius: 8px;
+	border-color: #000000;
+	color: #000000;
+	font-weight: 100;
+}
 
+/* red border effect when text box is clicked */
+input[type=text]:focus, [type="password"]:focus {
+  box-shadow: 0 0 5px rgba(255, 0, 0, 1);
+  padding: 3px 0px 3px 3px;
+  margin: 0px 0px 0px 0px;
+  border: 1px solid #B01212(255, 0, 0, 1);
+  color: #000000;
+  font-weight: 100;
+}
+
+/* login button */
 .btn
 {
-margin-left: 65px;
+margin-left: 85px;
 background-color: hsl(0, 69%, 22%) !important; 
 background-repeat: repeat-x; 
 filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#b42121", endColorstr="#5e1111"); 
@@ -28,19 +55,4 @@ background-image: linear-gradient(#b42121, #5e1111); border-color: #5e1111 #5e11
 text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.33); 
 -webkit-font-smoothing: antialiased; 
 padding: 6px 40px;
-}
-
-input[type="text"] {
-	border-style: solid;
-	border-width: 1px;
-    border-radius: 8px;
-	border-color: #000000;
-	color: #696969;
-}
-
-input[type=text]:focus, textarea:focus {
-  box-shadow: 0 0 5px rgba(255, 0, 0, 1);
-  padding: 3px 0px 3px 3px;
-  margin: 5px 1px 3px 0px;
-  border: 1px solid rgba(255, 0, 0, 1);
 }
