@@ -1,26 +1,48 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Rate My Demo</title>
-    </head>
+	<head>
+		<meta charset="utf-8">
+		<title>Upload your Demo!</title>
+	</head>
 
-    <body>
-        <h1>Upload a new Demo!</h1>
+	<body>
+		<!-- List of uploaded documents -->
+		{% if demos %}
+			<ul>
+			{% for demo in demos %}
+			    Your uploaded demo: <li><a href="{{ demo.docfile.url }}">{{ demo.docfile.name }}</a></li>
+                Your thumbnail: <li><a href="{{ demo.img.url }}">{{ demo.img.name }}</a></li>
+            {% endfor %}
 
-            Rate My Demo says: <strong>Upload demo!</strong><br />
 
-        <form id="demoform" action="Rate_my_Demo/upload" method="post" enctype="multipart/form-data">
 
-            {% csrf_token %}
-			<p>{{ demoform.non_field_errors }}</p>
-			<p>{{ demoform.file.label_tag }} {{ demoform.file.help_text }}</p>
+			</ul>
+		{% else %}
+			<p>No Demos.</p>
+		{% endif %}
+
+		<!-- Upload form. Note enctype attribute! -->
+		<form action="{% url "upload" %}" method="post" enctype="multipart/form-data">
+			{% csrf_token %}
+			<p>{{ form.non_field_errors }}</p>
+			<p>{{ form.docfile.label_tag }} {{ form.docfile.help_text }}</p>
 			<p>
-				{{ demoform.file.errors }}
-				{{ demoform.file }}
+
+				{{ form.docfile.errors }}
+				{{ form.docfile }}
+            <p> {{ form.img.label_tag }} {{ form.img.help_text }}</p>
+                {{ form.img }}
+            <p> {{ form.genre.label_tag }} {{ form.genre.help_text }}</p>
+            <p> {{ form.genre }} </p>
+            <p> {{ form.title.label_tag }} {{ form.title.help_text }}</p>
+                {{ form.title }}
+                {{ form.up }}
+                {{ form.down }}
+
 			</p>
-			<p><input type="submit" value="UUUload" /></p>
+			<p><input type="submit" value="Upload" /></p>
 		</form>
 
 	</body>
 
-</html>
+</html> 

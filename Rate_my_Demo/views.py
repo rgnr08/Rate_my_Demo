@@ -1,7 +1,7 @@
 from django.template import RequestContext
 from django.shortcuts import render_to_response
-from Rate_my_Demo.forms import UserForm, RateMyDemoUserForm, DocumentForm
-from Rate_my_Demo.models import Document
+from Rate_my_Demo.forms import UserForm, RateMyDemoUserForm, DemoForm
+from Rate_my_Demo.models import Demo
 from django.contrib.auth import authenticate, login
 from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth.decorators import login_required
@@ -99,28 +99,50 @@ def register(request):
             context)
 
 
-def list(request):
+def upload(request):
     # Handle file upload
     if request.method == 'POST':
-        form = DocumentForm(request.POST, request.FILES)
+        form = DemoForm(request.POST, request.FILES)
+        # art = ImageForm(request.POST, request.FILES)
+
         if form.is_valid():
-            newdoc = Document(docfile = request.FILES['docfile'])
-            newdoc.save()
+            print "poopoerz"
+            # newimg = Image(image = request.FILES['image'])
+            # newimg.save()
+            # print "image saved"
+            newdemo = Demo()
+            newdemo.img = request.FILES['img']
+            newdemo.user = request.user.username
+            print newdemo.user
+            # newdoc = Document(docfile= request.FILES['docfile'], genre=request.POST['genre'], title=request.POST['title'], up=request.POST['up'], down=request.POST['down'], img = newimg)
+            newdemo.docfile = request.FILES['docfile']
+            newdemo.genre = request.POST['genre']
+            newdemo.title = request.POST['title']
+            newdemo.up = request.POST['up']
+            newdemo.down = request.POST['down']
+            # newdoc.img = newimg
+            newdemo.save()
 
+
+
+            print "HERE"
             # Redirect to the document list after POST
-            #return HttpResponseRedirect(reverse('tango_with_django_project.Rate_my_Demo.views.list'))
+            return HttpResponseRedirect(reverse('Rate_my_Demo.views.upload'))
     else:
-        form = DocumentForm() # A empty, unbound form
-
+        form = DemoForm() # A empty, unbound form
+        # art = ImageForm()
     # Load documents for the list page
-    documents = Document.objects.all()
+    demos = Demo.objects.all()
+    # images = Image.objects.all()
+
 
     # Render list page with the documents and the form
     return render_to_response(
-        'Rate_my_Demo/list.html',
-        {'documents': documents, 'form': form},
+        'Rate_my_Demo/upload.html',
+        {'demos': demos, 'form': form},
         context_instance=RequestContext(request)
     )
+
 
 
 def user_login(request):

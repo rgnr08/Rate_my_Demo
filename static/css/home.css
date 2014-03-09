@@ -14,7 +14,7 @@ body {
 .logo {
 	position:relative;
 	text-align:center;
-	margin-left:-10px;
+	margin-left:0px;
 	margin-right:auto;
 	margin-top:auto;
 	display:block;
@@ -27,10 +27,12 @@ body {
 	padding:15px;
 	text-align:center;
 	width: 100%;
+	color:#F00;
 }
 
 .navbar-brand {
 	float:none;
+	color:#C41212;
 }
 
 .border	{
@@ -41,8 +43,7 @@ body {
 }
 
 .grid	{
-	margin-top:80px;
+	margin-top:20px;
 	margin-left:310px;
 	margin-right:200px;
 }
-

@@ -8,8 +8,8 @@ urlpatterns = patterns('',
         url(r'^login_page/$', views.user_login, name='login_page'),
         url(r'^restricted/$', views.restricted, name='restricted'),
         url(r'^logout/$', views.user_logout, name='logout'),
-        # url(r'^upload/$', views.upload, name='upload'),
-        url(r'^list/$', views.list, name='list'),
+        url(r'^upload/$', views.upload, name='upload'),
+        # url(r'^list/$', views.list, name='list'),
 
 
 

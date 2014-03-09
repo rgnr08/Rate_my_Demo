@@ -2,92 +2,24 @@ from django.db import models
 from django.contrib.auth.models import User
 
 
-# class Genre(models.Model):
-#     GENRE = (
-#
-#         ('Feelings', (
-#             ('Hot cocoa, a blanket and rain', 'Hot cocoa, a blanket and rain'),
-#             ('Ride, ride, ride', 'Ride, ride, ride'),
-#             ('I wish this would never end', 'I wish this would never end'),
-#             ('Funny stupid party', 'Funny, stupid party'),
-#             ('Run', 'Run'),
-#             ('Get away from here', 'Get away from here'),
-#             ('Chillout', 'Chillout'),
-#             ('Study', 'Study'),
-#             ('Summer', 'Summer'),
-#             ('Lazy Sunday', 'Lazy Sunday'),
-#             ('Mood', 'Mood'),
-#             ('Romantic', 'Romantic'),
-#             )
-#          ),
-#
-#         ('Rock', (
-#             ('Hard Rock', 'Hard Rock'),
-#             ('Classic Rock', 'Classic Rock'),
-#             ('Punk Rock', 'Punk Rock'),
-#             ('Indie Rock', 'Indie Rock'),
-#             ('Glam Rock', 'Glam Rock'),
-#             )
-#         ),
-#
-#         ('Pop', (
-#             ('Pop', ' Pop'),
-#             ('Teen Pop', 'Teen Pop'),
-#             ('Britpop', 'Britpop'),
-#             )
-#         ),
-#
-#         ('R&B', 'R&B'),
-#         ('Electronic', "Electronic"),
-#         ('Techno', 'Techno'),
-#         ('Dubstep', 'Dubstep'),
-#         ('Classical', 'Classical'),
-#         ('Folk', 'Folk'),
-#         ('Instrumental', 'Instrumental'),
-#         ('Tribal', 'Tribal'),
-#         ('Singer-songwriter', 'Singer-songwriter'),
-#
-#         ('Metal', (
-#             ('New Metal', 'New Metal'),
-#             ('Epic Metal', 'Epic Metal'),
-#             ('Industrial', 'Industrial'),
-#             )
-#         ),
-#
-#         ('Jazz', 'Jazz'),
-#         ('Blues', 'Blues'),
-#
-#
-#     )
-#
-#     genre = models.CharField(max_length=50,
-#                              choices=GENRE,
-#                              default='no genre')
-#
-#     def __unicode__(self):
-#         return self.genre
-
-
 class RateMyDemoUser(models.Model):
+
+    GENRE = (
+        ('Chillout', 'Chillout'),
+        ('Happy', 'Happy'),
+        ('Mood', 'Mood'),
+        ('Romantic', 'Romantic'),
+        ('Party', 'Party'),
+        ('Rock', 'Rock'),
+        ('Pop', 'Pop'),
+        ('Indie', 'Indie'),
+        ('Hip-Hop', 'Hip-Hop'),
+         )
+
     user = models.OneToOneField(User)
     thumbnail = models.ImageField(upload_to='thumbnail', default='/media/user_default.jpg', blank=True)
-
-    study = models.NullBooleanField()
-    chillout = models.NullBooleanField()
-    party = models.NullBooleanField()
-    mood =models.NullBooleanField()
-    rock = models.NullBooleanField()
-    pop = models.NullBooleanField()
-    country = models.NullBooleanField()
-    metal = models.NullBooleanField()
-    techno = models.NullBooleanField()
-    dubstep = models.NullBooleanField()
-    indie = models.NullBooleanField()
-    rnb = models.NullBooleanField()
-    hiphop = models.NullBooleanField()
-
+    genre = models.CharField(max_length=128, choices=GENRE)
     location = models.CharField(max_length=128, blank=True)
-    artist = models.BooleanField()
 
     def __unicode__(self):
         return self.user.username
@@ -95,38 +27,30 @@ class RateMyDemoUser(models.Model):
 
 class Demo(models.Model):
 
-    name = models.CharField(max_length=128)
-    file = models.FileField(upload_to='demos')
-    upload_time = models.DateTimeField(auto_now_add=True, editable=False)
-    uploader = models.ForeignKey(RateMyDemoUser)
-    artwork = models.ImageField(upload_to='artwork', default='/media/albumart_default.jpg', blank=True)
-    up_votes = models.IntegerField(editable=False, blank=True, null=True)
-    down_votes = models.IntegerField(editable=False, blank=True, null=True)
+    GENRE = (
+        ('Chillout', 'Chillout'),
+        ('Happy', 'Happy'),
+        ('Mood', 'Mood'),
+        ('Romantic', 'Romantic'),
+        ('Party', 'Party'),
+        ('Rock', 'Rock'),
+        ('Pop', 'Pop'),
+        ('Indie', 'Indie'),
+        ('Hip-Hop', 'Hip-Hop'),
+         )
 
-    study = models.NullBooleanField()
-    chillout = models.NullBooleanField()
-    party = models.NullBooleanField()
-    mood =models.NullBooleanField()
-    rock = models.NullBooleanField()
-    pop = models.NullBooleanField()
-    country = models.NullBooleanField()
-    metal = models.NullBooleanField()
-    techno = models.NullBooleanField()
-    dubstep = models.NullBooleanField()
-    indie = models.NullBooleanField()
-    rnb = models.NullBooleanField()
-    hiphop = models.NullBooleanField()
-
-
-    def __unicode__(self):
-        return self.name
-
-class Document(models.Model):
     docfile = models.FileField(upload_to='demos/%Y/%m/%d')
+    genre = models.CharField(max_length=128, choices=GENRE)
+    title = models.CharField(max_length=128)
+
+    img = models.ImageField(upload_to='artwork')
+    user = models.CharField(max_length=128)
+    up = models.IntegerField(editable=False, default=0)
+    down = models.IntegerField(editable=False, default=0)
 
 
     def __unicode__(self):
-        return self.docfile
+        return self.user
 
 class Favourites(models.Model):
 

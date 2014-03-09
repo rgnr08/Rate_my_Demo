@@ -1,7 +1,7 @@
 // JavaScript Document
 
 $(document).ready(function() {
-       $('.service').click(function() {
+       $('.service').hover(function() {
               var $this = $(this);
               if ($this.hasClass("open")) {
                      $this.find('.service-icon').animate({left: "0"});

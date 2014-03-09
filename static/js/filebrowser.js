@@ -1,1 +1,0 @@
-$ (":file).filestyle({icon: false});
