@@ -52,7 +52,7 @@ def register(request):
         # Note that we make use of both UserForm and UserProfileForm.
         user_form = UserForm(data=request.POST)
         profile_form = RateMyDemoUserForm(data=request.POST)
-        
+
 
         # If the two forms are valid...
         if user_form.is_valid() and profile_form.is_valid():
