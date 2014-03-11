@@ -34,7 +34,7 @@ def index(request):
 def about(request):
 
     #return HttpResponse("Rango says: here is the about page blood! <a href='/rango/'>Index</a>")
-    return render_to_response('Rate_my_Demo/about.html')
+    return render_to_response('Rate_my_Demo/about_page.html')
 
 
 
@@ -52,6 +52,7 @@ def register(request):
         # Note that we make use of both UserForm and UserProfileForm.
         user_form = UserForm(data=request.POST)
         profile_form = RateMyDemoUserForm(data=request.POST)
+        
 
         # If the two forms are valid...
         if user_form.is_valid() and profile_form.is_valid():

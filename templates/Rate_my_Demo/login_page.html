@@ -43,6 +43,7 @@
   <div class="container">
   <div class="login_form">
 			<form class="form-horizontal" method="post" action="/Rate_my_Demo/login_page/">
+                    {% csrf_token %}
 					<div class="email-group">
 						<div class="controls">
 							<input type="text" name="username" id="inputEmail" placeholder=" Email" autocomplete="off">
