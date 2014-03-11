@@ -1,5 +1,5 @@
 @charset "UTF-8";
-/* CSS Document */
+/* CSS Document - for all player buttons on grid as well as randomiz */
 
 .player_buttons	{
 	text-align:center;
@@ -8,12 +8,7 @@
 
 .glyphicon-play	{
 	font-size:36px;
-	margin-left:-25px;
-}
-
-.glyphicon-plus	{
-	font-size:34px;
-	margin-top:-33px;
+	margin-left:-5px;
 }
 
 .glyphicon-refresh {
@@ -21,6 +16,15 @@
 	margin-top:20px;
 	color:#FFF;
 	margin-left:-10px;
+}
+
+.glyphicon-refresh:hover {
+	font-size:40px;
+	margin-top:20px;
+	color:#FFF;
+	margin-left:-10px;
+	-animation: spin .7s infinite linear;
+	-webkit-animation: spin2 .7s infinite linear;
 }
 
 .randomizer	{
@@ -32,7 +36,7 @@
 	padding:30px;
 }
 
-.glyphicon-refresh-animate	{
+.glyphicon-refresh-animate:hover	{
 	-animation: spin .7s infinite linear;
 	-webkit-animation: spin2 .7s infinite linear;
 }

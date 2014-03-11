@@ -7,15 +7,17 @@
   <meta name="description" content="">
   <meta name="author" content="">
   <link rel="shortcut icon" href="file:///Macintosh HD/Users/Ragnar/assets/ico/favicon.ico">
-  <title>Welcome to Rate My Demo</title>
+  <title>About</title>
   
   <!-- Bootstrap core CSS -->
   <link href="../../static/css/bootstrap.min.css" rel="stylesheet">
   <link href="../../static/css/home.css" rel="stylesheet">
-  <link href="../../static/css/login.css" rel="stylesheet">
+  <link href="../../static/css/about.css" rel="stylesheet">
+  <link href="../../static/css/login.css" rel="stylesheet"> <!-- this will replaced by the proper about.css -->
   
-
-
+  <!-- Custom styles for this template -->
+  <link href="bootstrap-3.1.1-dist/jumbotron.css" rel="stylesheet">
+  
   <!-- Just for debugging purposes. Don't actually copy this line! -->
   <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
   
@@ -32,13 +34,15 @@
   <div class="top">
 	<div class="logo">
     <div class="container">
-    	<img src="../../static/logo.jpg" alt="RMD Logo">
+     <a href="home.html">	
+     <img src="../../static/logo.jpg" alt="RMD Logo">
+      </a>
     </div>
     </div>
   </div>
   
   <!-- this is the red separator between the banner area and main content area -->
-  <div class="separator">
+  <div class="border">
   </div>
   
   <!--main content panel where user profile and most functionality is displayed -->
@@ -61,13 +65,20 @@
 				<p>
 				<li>We don't like spam, you don't like spam. We present a platform that allows you to listen, vote, and favourite.</li>
 				<li>If you're a musician, benefit from honest streamlined feedback with no bias.</li>
-				<li>We're passionate about promoting true unsigned talent. You won't find any big names or established artists here, just a place to showcase new, emerging talent.</li>
+				<li>We're passionate about promoting true unsigned talent. You won't find any big names or established artists here, just a place to showcase new, 					emerging talent.</li>
 				</p>
 			</div>
 			<br>
 			<br>
 			<div class="join-us">
 				<h2>So what are you waiting for? Join us!</h2>
+                <br>
+                <br>
+                	<div class="button-group">
+						<div class="controls">
+						<button type="button" class="btn" >Home</button>
+                        <button type="button" class="btn" >Register</button>
+					</div>
 			</div>
 	</div>
 	</div>
@@ -76,7 +87,7 @@
   <div class="navbar navbar-inverse navbar-fixed-bottom" role="navigation">
     <div class="container">
       <div class="navbar-header">
-       <a class="navbar-brand" href="Rate_my_Demo/templates/about_page.html">About</a> <a class="navbar-brand" href="bootstrap-3.1.1-dist/contact.html">Contact</a> </div>
+       <a class="navbar-brand" href="about_page.html">About</a> <a class="navbar-brand" href="bootstrap-3.1.1-dist/contact.html">Contact</a> </di>
 	  </div>
     </div>
   </div>
@@ -85,7 +96,6 @@
       ================================================== --> 
   <!-- Placed at the end of the document so the pages load faster --> 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script> 
-  <script src="../../static/js/bootstrap.min.js"></script>
-
+  <script src="file:///Macintosh HD/Users/Ragnar/dist/js/bootstrap.min.js"></script>
   </body>
   </html>

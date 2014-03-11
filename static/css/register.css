@@ -1,6 +1,7 @@
 @charset "UTF-8";
 /* CSS Document - The postitioning of the main areas */
 
+
 body {
 	background-color:#666;
 }
@@ -43,10 +44,11 @@ body {
 	border-color:#B01212;
 }
 
-/* position of components*/
-.login_form {
+
+/* position of components */
+.form-area{
 	width: 305px;
-	margin-top: 90px;
+	margin-top: 10px;
 	margin-left: auto;
 	margin-right: auto;
 	font-size: 16px;
@@ -54,9 +56,26 @@ body {
 	color: #FFFFFF;
 }
 
+/* formatting for title label text */
+.title-label {
+	font-size: 22px;
+	margin-left: 44px;
+}
+
+/* position of checkboxes */
+input[type="checkbox"] {
+    margin-left: 46px;
+}
+
+/* formatting for checkbox label text*/
+label {
+font-size: 15px;
+font-weight: 100;
+}
+
 /* placeholder formatting */
-::-webkit-input-placeholder { color: #4D4D4D; font-size: 16px;}
-::-moz-placeholder { color: #4D4D4D; font-size: 16px;} /* firefox 19+ */
+::-webkit-input-placeholder { color: #4D4D4D; font-size: 16px; }
+::-moz-placeholder { color: #4D4D4D; font-size: 16px; } /* firefox 19+ */
 :-ms-input-placeholder { color: #4D4D4D; font-size: 16px; } /* ie */
 input:-moz-placeholder { color: #4D4D4D; font-size: 16px; }
 
@@ -64,7 +83,7 @@ input:-moz-placeholder { color: #4D4D4D; font-size: 16px; }
 input[type="text"], [type="password"]
 {
 	width: 300px;
-	height: 40px;
+	height: 35px;
 	border-style: solid;
 	border-width: 1px;
     border-radius: 8px;
@@ -77,16 +96,34 @@ input[type="text"], [type="password"]
 input[type=text]:focus, [type="password"]:focus {
   box-shadow: 0 0 5px rgba(255, 0, 0, 1);
   padding: 3px 0px 3px 3px;
-  margin: 0px 0px 0px 0px;
-  border: 1px solid #B01212(255, 0, 0, 1);
+  margin: 5px 1px 3px 0px;
+  border: 1px solid rgba(255, 0, 0, 1);
   color: #000000;
-  font-weight: 100;
+  font-weight: 200;
 }
 
-/* login button */
+/* formatting for browse label text */
+.browse-label {
+    display: inline-block;
+    margin-bottom: 5px;
+	margin-left: 35px;
+	font-size: 22px;
+}
+
+/* format of browse button */
+.browse-btn
+{
+	margin-left: 35px;
+	color: #FFFFFF;
+	font-size: 14px;
+	border-radius: 8px;
+	border-color: #000000;
+}
+	
+/* register button */
 .btn
 {
-margin-left: 85px;
+margin-left: 83px;
 background-color: hsl(0, 69%, 22%) !important; 
 background-repeat: repeat-x; 
 filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#b42121", endColorstr="#5e1111"); 

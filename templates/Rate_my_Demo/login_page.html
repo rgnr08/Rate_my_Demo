@@ -10,9 +10,7 @@
   
   <!-- Bootstrap core CSS -->
   <link href="../../static/css/bootstrap.min.css" rel="stylesheet">
-  <link href="../../static/css/home.css" rel="stylesheet">
   <link href="../../static/css/login.css" rel="stylesheet">
-
 
   <!-- Just for debugging purposes. Don't actually copy this line! -->
   <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
@@ -30,7 +28,9 @@
   <div class="top">
 	<div class="logo">
     <div class="container">
-    	<img src="../../static/logo.jpg" alt="RMD Logo">
+     	<a href="home.html">	
+     	<img src="../../static/logo.jpg" alt="RMD Logo">
+      	</a>
     </div>
     </div>
   </div>
@@ -43,7 +43,6 @@
   <div class="container">
   <div class="login_form">
 			<form class="form-horizontal" method="post" action="/Rate_my_Demo/login_page/">
-                    {% csrf_token %}
 					<div class="email-group">
 						<div class="controls">
 							<input type="text" name="username" id="inputEmail" placeholder=" Email" autocomplete="off">
@@ -71,7 +70,7 @@
   <div class="navbar navbar-inverse navbar-fixed-bottom" role="navigation">
     <div class="container">
       <div class="navbar-header">
-       <a class="navbar-brand" href="/Rate_my_Demo/about_page/">About</a> <a class="navbar-brand" href="bootstrap-3.1.1-dist/contact.html">Contact</a> </div>
+       <a class="navbar-brand" href="about_page.html">About</a> <a class="navbar-brand" href="bootstrap-3.1.1-dist/contact.html">Contact</a> </div>
 	  </div>
     </div>
   </div>

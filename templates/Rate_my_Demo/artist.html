@@ -1,21 +1,21 @@
   <!DOCTYPE html>
-  <html lang="en"><head>
+  <html lang="en">
+  <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="">
   <meta name="author" content="">
   <link rel="shortcut icon" href="../../assets/ico/favicon.ico">
-  <title>Welcome to Rate My Demo</title>
+  <title>Hello</title>
   
   <!-- Bootstrap core CSS -->
   <link href="../../static/css/bootstrap.min.css" rel="stylesheet">
   <link href="../../static/css/bootstrap.css" rel="stylesheet">
   <link href="../../static/css/audioplayer.css" rel="stylesheet">
-  <link href="../../static/css/grid.css" rel="stylesheet">
   <link href="../../static/css/player_buttons.css" rel="stylesheet">
   <link href="../../static/css/home.css" rel="stylesheet">
-  <link href="../../static/css/font-awesome.css">
+  <link href="../../static/css/artist.css" rel="stylesheet">
     
   <!-- Just for debugging purposes. Don't actually copy this line! -->
   <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
@@ -25,11 +25,12 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
       <![endif]--> 
+    
   </head>
   
   <body>
   
-  <!-- top panel -->
+  <!-- top panel with logo -->
   <div class="top">
 	<div class="logo">
     <div class="container">
@@ -42,23 +43,33 @@
   </div>
   
   <!--main content panel where user profile and most functionality is displayed -->
-  <div class="container">
+   <div class="container">
   
-        <!-- randomizer button -->
-  <div class="randomizer">
-  	<span class="glyphicon glyphicon-refresh">
-    </span>
+   <!-- randomizer button -->
+   <div class="randomizer">
+  	 <span class="glyphicon glyphicon-refresh">
+     </span>
+   </div>
+  
+   <!-- side menu -->
+   <div class="horizontal">
+    <ul>
+    <li><a href="#">Home</a></li>
+    <li><a href="#">Demos</a></li>
+    <li><a href="#">Favourites</a></li>
+    <li><a href="#">Details</a></li>
+    </ul>
+   </div>
+  
+   <div class="button-group">
+	 <div class="controls">
+		<a href="#" class="btn btn-primary btn-default"><span class="glyphicon glyphicon-cloud-upload"></span> Upload</a>
+	 </div>	
   </div>
   
-	<div class="button-group">
-		<div class="controls">
-			<button type="submit" class="btn"value="submit">Login</button>
-		</div>
-		<div class="controls">
-			<button type="submit" class="btn"value="submit">Register</button>
-		</div>
-	</div>
-  
+  <div class="logout">
+       <button type="submit" class="btn"value="submit">Log out</button>
+  </div>
   <!-- start of the grid layout for the demo selection -->
   <div class="grid">
   <div id="services" class="cf">
@@ -66,8 +77,7 @@
               <div class="service-icon"><span class="icon-web"></span><br/>Info</div>
               <div class="service-description">
               	<div class="player_buttons">
-              	<span class="glyphicon glyphicon-play">
-                </span>
+              	<span class="glyphicon glyphicon-play"></span>
                 </div>
               </div>
        </section>
@@ -114,12 +124,12 @@
 	</div>
     </div> <!-- END #services -->
     
+  <!-- audio player -->  
   <div id="audio-player" class="audio-player-wrapper">
   <div class="audio-player-image">
     <span class="audio-player-song-name"></span>
   </div>
 
-  <!-- audio player -->
   <div class="audio-player-controls">
     <span class="audio-player-progress">
       <span class="audio-player-progress-bar"></span>
@@ -130,7 +140,7 @@
       <a role="button" class="audio-player-button small icon-forward"></a>
     </span>
   	</div>
-  </div>  
+  </div>    
     
   </div>
   
