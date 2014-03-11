@@ -11,9 +11,30 @@ class UserForm(forms.ModelForm):
 
 
 class RateMyDemoUserForm(forms.ModelForm):
+
+    GENRE = (
+        ('Chillout', 'Chillout'),
+        ('Happy', 'Happy'),
+        ('Mood', 'Mood'),
+        ('Romantic', 'Romantic'),
+        ('Party', 'Party'),
+        ('Rock', 'Rock'),
+        ('Pop', 'Pop'),
+        ('Indie', 'Indie'),
+        ('Hip-Hop', 'Hip-Hop'),
+         )
+
+    USERTYPE = (
+        ('Listener', 'Listener'),
+        ('Artist', 'Artist'),
+        )
+
+    genre = forms.ChoiceField(choices=GENRE, label="Select a genre:")
+    usertype = forms.ChoiceField(choices=USERTYPE, label= "Select usertype:")
+
     class Meta:
         model = RateMyDemoUser
-        fields = ('thumbnail', 'location', 'genre')
+        fields = ('location', 'thumbnail', 'genre', 'usertype')
 
 
 class DemoForm(forms.ModelForm):

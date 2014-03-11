@@ -14,15 +14,22 @@ class RateMyDemoUser(models.Model):
         ('Pop', 'Pop'),
         ('Indie', 'Indie'),
         ('Hip-Hop', 'Hip-Hop'),
-         )
+        )
+
+    USERTYPE = (
+        ('Listener', 'Listener'),
+        ('Artist', 'Artist'),
+        )
 
     user = models.OneToOneField(User)
     thumbnail = models.ImageField(upload_to='thumbnail', default='/media/user_default.jpg', blank=True)
     genre = models.CharField(max_length=128, choices=GENRE)
     location = models.CharField(max_length=128, blank=True)
+    usertype = models.CharField(max_length=100, choices=USERTYPE)
 
     def __unicode__(self):
         return self.user.username
+
 
 
 class Demo(models.Model):
