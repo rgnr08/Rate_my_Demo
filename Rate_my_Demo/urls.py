@@ -4,6 +4,8 @@ from Rate_my_Demo import views
 urlpatterns = patterns('',
         url(r'^$', views.index, name='index'),
         url(r'^about_page/$', views.about, name='about'),
+        url(r'^registration_successful/$', views.about, name='about'),
+        url(r'^bad_details/$', views.about, name='about'),
         url(r'^register/$', views.register, name='register'),
         url(r'^login_page/$', views.user_login, name='login_page'),
         url(r'^restricted/$', views.restricted, name='restricted'),
