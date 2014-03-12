@@ -156,6 +156,9 @@ def upload(request):
 
 
 def user_login(request):
+    #uploader = request.user
+    #demos = Demos.objects.filter(user = uploader)
+
     # Like before, obtain the context for the user's request.
     context = RequestContext(request)
     print "HERE1"
@@ -185,6 +188,15 @@ def user_login(request):
                 # If the account is valid and active, we can log the user in.
                 # We'll send the user back to the homepage.
                 login(request, user)
+
+                rate_my_demo_user = RateMyDemoUser.objects.get(user = user)
+                print rate_my_demo_user.usertype
+
+                if rate_my_demo_user.usertype == 'Artist':
+                    print 'user is an artist'
+                else:
+                    print 'user is listener!!'
+
                 return HttpResponseRedirect('/Rate_my_Demo/')
             else:
                 # An inactive account was used - no logging in!
