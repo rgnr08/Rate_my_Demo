@@ -55,6 +55,10 @@ def register(request):
 
         if request.POST['usertype'] == 'Artist':
             print "Artist"
+
+        if request.POST['username']:
+            print "Found Username"
+
         # If the two forms are valid...
         if user_form.is_valid() and profile_form.is_valid():
             # Save the user's form data to the database.
@@ -82,6 +86,9 @@ def register(request):
             # Update our variable to tell the template registration was successful.
             registered = True
 
+            if registered == True:
+                return render_to_response('Rate_my_Demo/registration_successful.html')
+
         # Invalid form or forms - mistakes or something else?
         # Print problems to the terminal.
         # They'll also be shown to the user.
@@ -96,7 +103,7 @@ def register(request):
 
     # Render the template depending on the context.
     return render_to_response(
-            'Rate_my_Demo/register.html',
+            'Rate_my_Demo/register_page.html',
             {'user_form': user_form, 'profile_form': profile_form, 'registered': registered},
             context)
 

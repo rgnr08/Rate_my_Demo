@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+  <html lang="en">
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="shortcut icon" href="file:///Macintosh HD/Users/Ragnar/assets/ico/favicon.ico">
+  <title>Welcome to Rate My Demo</title>
+  
+  <!-- Bootstrap core CSS -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/home.css" rel="stylesheet">
+  <link href="css/upload.css" rel="stylesheet">
+  
+  <!-- Custom styles for this template -->
+  <link href="bootstrap-3.1.1-dist/jumbotron.css" rel="stylesheet">
+  
+  <!-- Just for debugging purposes. Don't actually copy this line! -->
+  <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+  
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+      <![endif]-->
+  </head>
+  
+  <body>
+  
+  <!-- top panel -->
+  <div class="top">
+	<div class="logo">
+    <div class="container">
+    	<img src="logo.jpg" alt="RMD Logo">
+    </div>
+    </div>
+  </div>
+  
+  <!-- this is the red separator between the banner area and main content area -->
+  <div class="separator">
+  </div>
+  
+  <!--main content panel where user profile and most functionality is displayed -->
+  <div class="container">
+	<div class="form-area">
+		    <form class="form-horizontal">
+				<div class="trackname-group">
+					<div class="controls">
+						<label class="title-label" for="inputLocation">Enter your title</label>
+						<input type="text" id="inputTrackName" placeholder=" Track Name" autocomplete="off">
+					</div>
+				</div>
+				<br/>
+				<label class="genre-label" for="inputLocation">Choose a genre/mood</label>
+				<select class="combobox">
+					<option>Rock</option>
+					<option value="PO">Pop</option>
+					<option value="HH">Hip-Hop</option>
+					<option value="CH">Chillout</option>
+					<option value="MO">Mood</option>
+					<option value="RO">Romance</option>
+					<option value="ST">Study</option>
+				</select>
+				<br/>
+				<br/>
+				<div class="browse-group">
+					<label class="trackselect-label" for="inputLocation">Choose a track</label>
+					<div class="controls">
+					<div class="browse-btn">
+						<input type="file" class="filestyle" data-input="false">
+					</div>
+					</div>
+				</div>
+				<br/>
+				<div class="browse-group">
+					<label class="artwork-label" for="inputLocation">Choose artwork</label>
+					<div class="controls">
+					<div class="browse-btn">
+						<input type="file" class="filestyle" data-input="false">
+					</div>
+					</div>
+				</div>
+			</form>
+	</div>
+  </div>
+  
+  <!-- bottom navigation bar -->
+  <div class="navbar navbar-inverse navbar-fixed-bottom" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
+       <a class="navbar-brand" href="bootstrap-3.1.1-dist/about.html">About</a> <a class="navbar-brand" href="bootstrap-3.1.1-dist/contact.html">Contact</a> </div>
+	  </div>
+    </div>
+  </div>
+  
+  <!-- Bootstrap core JavaScript
+      ================================================== --> 
+  <!-- Placed at the end of the document so the pages load faster --> 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script> 
+  <script src="file:///Macintosh HD/Users/Ragnar/dist/js/bootstrap.min.js"></script>
+  <script type="text/javascript">$(document).ready(function(){ $('.combobox').combobox();});</script>
+  </body>
+  </html>

@@ -10,23 +10,6 @@
 	color: #FFFFFF;
 }
 
-/* formatting for title label text */
-.title-label {
-	font-size: 22px;
-	margin-left: 44px;
-}
-
-/* position of checkboxes */
-input[type="checkbox"] {
-    margin-left: 46px;
-}
-
-/* formatting for checkbox label text*/
-label {
-font-size: 15px;
-font-weight: 100;
-}
-
 /* placeholder formatting */
 ::-webkit-input-placeholder { color: #4D4D4D; font-size: 16px; }
 ::-moz-placeholder { color: #4D4D4D; font-size: 16px; } /* firefox 19+ */
@@ -63,9 +46,30 @@ input[type=text]:focus, [type="password"]:focus {
 }
 
 /* formatting for browse label text */
-.browse-label {
+.title-label {
     margin-bottom: 5px;
-	margin-left: 35px;
+	margin-left: 70px;
+	font-size: 22px;
+}
+
+/* formatting for browse label text */
+.genre-label {
+    margin-bottom: 5px;
+	margin-left: 38px;
+	font-size: 22px;
+}
+
+/* formatting for browse label text */
+.trackselect-label {
+    margin-bottom: 5px;
+	margin-left: 72px;
+	font-size: 22px;
+}
+
+/* formatting for browse label text */
+.artwork-label {
+    margin-bottom: 5px;
+	margin-left: 72px;
 	font-size: 22px;
 }
 

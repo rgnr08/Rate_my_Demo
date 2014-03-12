@@ -43,9 +43,10 @@
   <div class="container">
   <div class="login_form">
 			<form class="form-horizontal" method="post" action="/Rate_my_Demo/login_page/">
+                {% csrf_token %}
 					<div class="email-group">
 						<div class="controls">
-							<input type="text" name="username" id="inputEmail" placeholder=" Email" autocomplete="off">
+							<input type="text" name="username" id="inputEmail" placeholder=" Username" autocomplete="off">
 						</div>
 					</div>
 					<br>
@@ -70,7 +71,7 @@
   <div class="navbar navbar-inverse navbar-fixed-bottom" role="navigation">
     <div class="container">
       <div class="navbar-header">
-       <a class="navbar-brand" href="about_page.html">About</a> <a class="navbar-brand" href="bootstrap-3.1.1-dist/contact.html">Contact</a> </div>
+       <a class="navbar-brand" href="/Rate_my_Demo/about_page/">About</a> <a class="navbar-brand" href="bootstrap-3.1.1-dist/contact.html">Contact</a> </div>
 	  </div>
     </div>
   </div>
