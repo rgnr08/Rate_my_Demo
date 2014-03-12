@@ -111,33 +111,40 @@ def register(request):
 
 def upload(request):
     # Handle file upload
+    uploaded = False
     if request.method == 'POST':
         form = DemoForm(request.POST, request.FILES)
         # art = ImageForm(request.POST, request.FILES)
 
+
+
         if form.is_valid():
-            print "poopoerz"
-            # newimg = Image(image = request.FILES['image'])
-            # newimg.save()
-            # print "image saved"
+            print "got here"
+
+            rate_my_demo_user = RateMyDemoUser.objects.get(user=request.user)
+            print rate_my_demo_user
+
             newdemo = Demo()
             newdemo.img = request.FILES['img']
-            newdemo.user = request.user.username
-            print newdemo.user
-            # newdoc = Document(docfile= request.FILES['docfile'], genre=request.POST['genre'], title=request.POST['title'], up=request.POST['up'], down=request.POST['down'], img = newimg)
+            newdemo.user = rate_my_demo_user
             newdemo.docfile = request.FILES['docfile']
             newdemo.genre = request.POST['genre']
             newdemo.title = request.POST['title']
             newdemo.up = request.POST['up']
             newdemo.down = request.POST['down']
-            # newdoc.img = newimg
             newdemo.save()
+            uploaded = True
+
+            if rate_my_demo_user.usertype == 'Artist':
+                print 'user is an artist'
+                return render_to_response('Rate_my_Demo/artist.html', {'uploaded': uploaded})
+            else:
+                print 'user is listener!!'
+                return render_to_response('Rate_my_Demo/listener.html', {'uploaded': uploaded})
 
 
 
-            print "HERE"
-            # Redirect to the document list after POST
-            return HttpResponseRedirect(reverse('Rate_my_Demo.views.upload'))
+
     else:
         form = DemoForm() # A empty, unbound form
         # art = ImageForm()
@@ -148,7 +155,7 @@ def upload(request):
 
     # Render list page with the documents and the form
     return render_to_response(
-        'Rate_my_Demo/upload.html',
+        'Rate_my_Demo/upload_page.html',
         {'demos': demos, 'form': form},
         context_instance=RequestContext(request)
     )
@@ -194,10 +201,10 @@ def user_login(request):
 
                 if rate_my_demo_user.usertype == 'Artist':
                     print 'user is an artist'
+                    return render_to_response('Rate_my_Demo/artist.html')
                 else:
                     print 'user is listener!!'
-
-                return HttpResponseRedirect('/Rate_my_Demo/')
+                    return render_to_response('Rate_my_Demo/listener.html')
             else:
                 # An inactive account was used - no logging in!
                 return HttpResponse("Your Rate my Demo account is disabled.")
@@ -227,3 +234,34 @@ def user_logout(request):
 
     # Take the user back to the homepage.
     return HttpResponseRedirect('/Rate_my_Demo/')
+
+@login_required
+def artist(request):
+    return HttpResponseRedirect('/Rate_my_Demo/artist.html/')
+
+@login_required
+def check_usertype(request):
+
+    print "user got here"
+    user = request.user
+    print user.username
+
+    RMDuser = RateMyDemoUser.objects.get(user=user)
+    print RMDuser.usertype
+
+    if RMDuser.usertype == 'Artist':
+       print 'user is an artist'
+       return render_to_response('Rate_my_Demo/artist.html')
+    else:
+       print 'user is listener!!'
+       return render_to_response('Rate_my_Demo/listener.html')
+
+def reg_success(request):
+
+    return HttpResponseRedirect('/Rate_my_Demo/registration_successful.html/')
+
+def contact(request):
+    #print request.META['USER']
+    #user = request.META['USER']
+    #return HttpResponse("Rango says: here is the about page blood! <a href='/rango/'>Index</a>")
+    return render_to_response('Rate_my_Demo/contact.html')

@@ -51,7 +51,7 @@ class Demo(models.Model):
     title = models.CharField(max_length=128)
 
     img = models.ImageField(upload_to='artwork')
-    user = models.CharField(max_length=128)
+    user = models.ForeignKey(RateMyDemoUser)
     up = models.IntegerField(editable=False, default=0)
     down = models.IntegerField(editable=False, default=0)
 

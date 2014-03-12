@@ -9,13 +9,11 @@
   <title>Welcome to Rate My Demo</title>
   
   <!-- Bootstrap core CSS -->
-  <link href="css/bootstrap.min.css" rel="stylesheet">
-  <link href="css/home.css" rel="stylesheet">
-  <link href="css/upload.css" rel="stylesheet">
+  <link href="../../static/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../../static/css/home.css" rel="stylesheet">
+  <link href="../../static/css/upload.css" rel="stylesheet">
   
-  <!-- Custom styles for this template -->
-  <link href="bootstrap-3.1.1-dist/jumbotron.css" rel="stylesheet">
-  
+
   <!-- Just for debugging purposes. Don't actually copy this line! -->
   <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
   
@@ -32,7 +30,7 @@
   <div class="top">
 	<div class="logo">
     <div class="container">
-    	<img src="logo.jpg" alt="RMD Logo">
+     	<img src="../../static/logo.jpg" alt="RMD Logo">
     </div>
     </div>
   </div>
@@ -44,23 +42,26 @@
   <!--main content panel where user profile and most functionality is displayed -->
   <div class="container">
 	<div class="form-area">
-		    <form class="form-horizontal">
+            <form class="form-horizontal" action="{% url "upload" %}" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
 				<div class="trackname-group">
 					<div class="controls">
 						<label class="title-label" for="inputLocation">Enter your title</label>
-						<input type="text" id="inputTrackName" placeholder=" Track Name" autocomplete="off">
+						{{ form.title }}
 					</div>
 				</div>
 				<br/>
-				<label class="genre-label" for="inputLocation">Choose a genre/mood</label>
-				<select class="combobox">
-					<option>Rock</option>
-					<option value="PO">Pop</option>
-					<option value="HH">Hip-Hop</option>
-					<option value="CH">Chillout</option>
-					<option value="MO">Mood</option>
-					<option value="RO">Romance</option>
-					<option value="ST">Study</option>
+				<label class="genre-label"  for="inputLocation">Choose a genre/mood</label>
+
+                   <select class="combobox" name="genre">
+					<option>Genre</option>
+                    <option value="Rock"></option>
+					<option value="Pop">Pop</option>
+					<option value="Hip-Hop">Hip-Hop</option>
+					<option value="Chillout">Chillout</option>
+					<option value="Mood">Mood</option>
+					<option value="Romance">Romance</option>
+					<option value="Study">Study</option>
 				</select>
 				<br/>
 				<br/>
@@ -68,7 +69,7 @@
 					<label class="trackselect-label" for="inputLocation">Choose a track</label>
 					<div class="controls">
 					<div class="browse-btn">
-						<input type="file" class="filestyle" data-input="false">
+						{{ form.docfile }}
 					</div>
 					</div>
 				</div>
@@ -77,10 +78,17 @@
 					<label class="artwork-label" for="inputLocation">Choose artwork</label>
 					<div class="controls">
 					<div class="browse-btn">
-						<input type="file" class="filestyle" data-input="false">
+						{{ form.img }}
+                        {{ form.up }}
+                        {{ form.down }}
 					</div>
 					</div>
 				</div>
+                 <div class="button-group">
+	                <div class="controls">
+                       <button type="submit" name="submit" value="Upload" class="btn">Upload</button>
+                    </div>
+                 </div>
 			</form>
 	</div>
   </div>
@@ -89,7 +97,7 @@
   <div class="navbar navbar-inverse navbar-fixed-bottom" role="navigation">
     <div class="container">
       <div class="navbar-header">
-       <a class="navbar-brand" href="bootstrap-3.1.1-dist/about.html">About</a> <a class="navbar-brand" href="bootstrap-3.1.1-dist/contact.html">Contact</a> </div>
+       <a class="navbar-brand" href="/Rate_my_Demo/about_page/">About</a> <a class="navbar-brand" href="bootstrap-3.1.1-dist/contact.html">Contact</a> </div>
 	  </div>
     </div>
   </div>

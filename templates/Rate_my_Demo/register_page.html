@@ -45,7 +45,7 @@
   <!--main content panel where user profile and most functionality is displayed -->
   <div class="container">
 	<div class="form-area">
-		    <form class="form-horizontal" id="user_form" method="post" action="/Rate_my_Demo/register_page/" enctype="multipart/form-data">
+		    <form class="form-horizontal" id="form" method="post" action="/Rate_my_Demo/register_page/" enctype="multipart/form-data">
                 {% csrf_token %}
 				<div class="control-group">
 					<label class="title-label" for="inputLocation">Choose a profile type</label>
@@ -106,6 +106,7 @@
 					</div>
 				</div>
 			</form>
+                        <a href ="/Rate_my_Demo/"><button type="button" class="btn" >Home</button></a>
 	</div>
   </div>
   
@@ -113,7 +114,7 @@
   <div class="navbar navbar-inverse navbar-fixed-bottom" role="navigation">
     <div class="container">
       <div class="navbar-header">
-       <a class="navbar-brand" href="/Rate_my_Demo/about_page/">About</a> <a class="navbar-brand" href="bootstrap-3.1.1-dist/contact.html">Contact</a> </div>
+       <a class="navbar-brand" href="/Rate_my_Demo/about_page/">About</a> <a class="navbar-brand" href="/Rate_my_Demo/contact/">Contact</a> </div>
 	  </div>
     </div>
   </div>
