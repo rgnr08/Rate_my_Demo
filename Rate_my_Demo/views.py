@@ -1,7 +1,7 @@
 from django.template import RequestContext
 from django.shortcuts import render_to_response
 from Rate_my_Demo.forms import UserForm, RateMyDemoUserForm, DemoForm
-from Rate_my_Demo.models import Demo
+from Rate_my_Demo.models import Demo, RateMyDemoUser
 from django.contrib.auth import authenticate, login
 from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth.decorators import login_required
@@ -32,7 +32,8 @@ def index(request):
 
 
 def about(request):
-
+    #print request.META['USER']
+    #user = request.META['USER']
     #return HttpResponse("Rango says: here is the about page blood! <a href='/rango/'>Index</a>")
     return render_to_response('Rate_my_Demo/about_page.html')
 
@@ -160,6 +161,7 @@ def user_login(request):
     print "HERE1"
     # If the request is a HTTP POST, try to pull out the relevant information.
     if request.method == 'POST':
+
         # Gather the username and password provided by the user.
         # This information is obtained from the login form.
         print "HERE2"
@@ -198,6 +200,7 @@ def user_login(request):
         # No context variables to pass to the template system, hence the
         # blank dictionary object...
         return render_to_response('Rate_my_Demo/login_page.html', {}, context)
+
 
 @login_required
 def restricted(request):
