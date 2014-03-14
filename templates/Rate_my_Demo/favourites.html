@@ -11,10 +11,12 @@
 			<ul>
 			{% for demo in demos %}
 			    Your uploaded demo: <li><a href="{{ demo.docfile.url }}">{{ demo.docfile.name }}</a></li>
-                Your thumbnail: <li><a href="{{ demo.img.url }}">{{ demo.img.name }}</a></li>
-            {% endfor %}
+                </br>
+                Your thumbnail: <li><img border="0" src="{{ demo.img.url }}" alt="Pulpit rock" width="304" height="228">
+         {% endfor %}
          {% endif %}
 
         	</ul>
     </body>
 </html>
+

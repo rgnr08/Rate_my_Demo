@@ -40,10 +40,8 @@
        height: 100%;
        top: 0;
        left: 0;
-       background: #fff;
-       padding:;
+       background: #000;
        color: #222;
-	   text-align:center;
 }
 
 #services .service .service-description {

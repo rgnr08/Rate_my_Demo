@@ -30,6 +30,9 @@
 .randomizer	{
 	text-align:center;
 	margin-top:0px;
+	border:none !important;
+	outline:none;
+	background:transparent;
 }
 
 .text_padding	{

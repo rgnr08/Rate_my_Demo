@@ -14,18 +14,25 @@ def index(request):
     # Request the context of the request
     # The context contains information such as the client's machine details, for example.
 
-    context = RequestContext(request)
+    # context = RequestContext(request)
 
     # Construct a dictionary to pass to the template engine as its context
     # Note the key boldmessage is the same as {{ boldmessage }} in the template!
 
-    context_dict = {'boldmessage': "I am bold font from the context"}
+    # context_dict = {'boldmessage': "I am bold font from the context"}
 
     # Return a rendered response to send to the client.
     # We make use of the shortcut function to make our lives easier.
     # Note that the first parameter is the template we wish to use.
 
-    return render_to_response('Rate_my_Demo/index.html', context_dict, context)
+    #rate_my_demo_user = RateMyDemoUser.objects.get(user=request.user)
+    demos = Demo.objects.all()
+    print demos
+
+
+    # return render_to_response('Rate_my_Demo/favourites.html', {'demos': demos}, context_instance=RequestContext(request))
+
+    return render_to_response('Rate_my_Demo/index.html', {'demos': demos},  context_instance=RequestContext(request))
 
     #The following code was substituted by what's above
     #return HttpResponse("Rango says hello world! <a href='/rango/about'>about</a>")
