@@ -14,6 +14,8 @@ urlpatterns = patterns('',
         url(r'^check_usertype/$', views.check_usertype, name='check_usertype'),
         url(r'^upload_page/$', views.upload, name='upload'),
         url(r'^contact/$', views.contact, name='contact'),
+        url(r'^favourites/$', views.favourites, name='favourite'),
+
         # url(r'^list/$', views.list, name='list'),
 
 

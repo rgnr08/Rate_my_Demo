@@ -147,9 +147,11 @@ def upload(request):
 
     else:
         form = DemoForm() # A empty, unbound form
-        # art = ImageForm()
     # Load documents for the list page
-    demos = Demo.objects.all()
+    rate_my_demo_user = RateMyDemoUser.objects.get(user=request.user)
+    demos = Demo.objects.filter(user=rate_my_demo_user)
+
+    print demos
     # images = Image.objects.all()
 
 
@@ -265,3 +267,12 @@ def contact(request):
     #user = request.META['USER']
     #return HttpResponse("Rango says: here is the about page blood! <a href='/rango/'>Index</a>")
     return render_to_response('Rate_my_Demo/contact.html')
+
+def favourites(request):
+
+    rate_my_demo_user = RateMyDemoUser.objects.get(user=request.user)
+    demos = Demo.objects.filter(user=rate_my_demo_user)
+
+
+
+    return render_to_response('Rate_my_Demo/favourites.html', {'demos': demos}, context_instance=RequestContext(request))
