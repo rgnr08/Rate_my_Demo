@@ -210,10 +210,12 @@ def user_login(request):
 
                 if rate_my_demo_user.usertype == 'Artist':
                     print 'user is an artist'
-                    return render_to_response('Rate_my_Demo/artist.html')
+                    demos = Demo.objects.all()
+                    return render_to_response('Rate_my_Demo/artist.html', {'demos': demos})
                 else:
                     print 'user is listener!!'
-                    return render_to_response('Rate_my_Demo/listener.html')
+                    demos = Demo.objects.all()
+                    return render_to_response('Rate_my_Demo/listener.html', {'demos': demos})
             else:
                 # An inactive account was used - no logging in!
                 return HttpResponse("Your Rate my Demo account is disabled.")
@@ -246,6 +248,7 @@ def user_logout(request):
 
 @login_required
 def artist(request):
+
     return HttpResponseRedirect('/Rate_my_Demo/artist.html/')
 
 @login_required
@@ -259,11 +262,13 @@ def check_usertype(request):
     print RMDuser.usertype
 
     if RMDuser.usertype == 'Artist':
-       print 'user is an artist'
-       return render_to_response('Rate_my_Demo/artist.html')
+        print 'user is an artist'
+        demos = Demo.objects.all()
+        return render_to_response('Rate_my_Demo/artist.html', {'demos': demos})
     else:
-       print 'user is listener!!'
-       return render_to_response('Rate_my_Demo/listener.html')
+        print 'user is listener!!'
+        demos = Demo.objects.all()
+        return render_to_response('Rate_my_Demo/listener.html', {'demos': demos})
 
 def reg_success(request):
 
@@ -275,11 +280,17 @@ def contact(request):
     #return HttpResponse("Rango says: here is the about page blood! <a href='/rango/'>Index</a>")
     return render_to_response('Rate_my_Demo/contact.html')
 
-def favourites(request):
+def demos(request):
 
     rate_my_demo_user = RateMyDemoUser.objects.get(user=request.user)
     demos = Demo.objects.filter(user=rate_my_demo_user)
 
 
 
-    return render_to_response('Rate_my_Demo/favourites.html', {'demos': demos}, context_instance=RequestContext(request))
+    return render_to_response('Rate_my_Demo/demos.html', {'demos': demos}, context_instance=RequestContext(request))
+
+def favourites(request):
+    demos = Demo.objects.all()
+
+    print "FAVOURITE!"
+    return render_to_response('Rate_my_Demo/artist.html', {'demos': demos}, context_instance=RequestContext(request))

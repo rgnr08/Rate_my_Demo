@@ -1,11 +1,6 @@
   <!DOCTYPE html>
   <html lang="en"><head>
 
-  <script type="text/javascript">
-
-  var demo1 ="{{ demo.docfile.url }}";
-
-  </script>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -108,11 +103,6 @@
 
   <!-- start of the grid layout for the demo selection -->
 
-  {% for demo in demos %}
-
-
-
-  {% endfor %}
 
   <div class="grid">
   <div id="services" class="cf">
@@ -122,11 +112,17 @@
        <section class="service">
               <div class="service-icon"><span class="icon-graphic"></span><br/><img border="0" src="{{ demo.img.url }}" alt="{{ demo.name }}" width="100" height="100"></div>
               <div class="service-description">
+
                 <div class="player_buttons">
                 <a onclick="this.firstChild.play()"><audio src="{{ demo.docfile.url }}"></audio>
               	<span class="glyphicon glyphicon-play"></span>
                 </a>
+                <a onclick="this.firstChild.play()">
+                <span class="glyphicon glyphicon-star"></span>
+                </a>
+                {{ demo.title }}
                 </div>
+
               </div>
        </section>
 

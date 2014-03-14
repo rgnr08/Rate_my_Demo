@@ -7,15 +7,19 @@
   <meta name="description" content="">
   <meta name="author" content="">
   <link rel="shortcut icon" href="../../assets/ico/favicon.ico">
-  <title>Hello</title>
+  <title>Artist Page</title>
   
   <!-- Bootstrap core CSS -->
   <link href="../../static/css/bootstrap.min.css" rel="stylesheet">
-  <link href="../../static/css/bootstrap.css" rel="stylesheet">
   <link href="../../static/css/audioplayer.css" rel="stylesheet">
+  <link href="../../static/css/bootstrap.css" rel="stylesheet">
+  <link href="../../static/css/grid.css" rel="stylesheet">
   <link href="../../static/css/player_buttons.css" rel="stylesheet">
   <link href="../../static/css/home.css" rel="stylesheet">
+  <link href="../../static/css/jplayer.blue.monday.css" rel="stylesheet">
   <link href="../../static/css/artist.css" rel="stylesheet">
+
+
     
   <!-- Just for debugging purposes. Don't actually copy this line! -->
   <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
@@ -26,6 +30,32 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
       <![endif]--> 
     
+    <!-- Audio Player JS -->
+
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+  <script type="text/javascript" src="../../static/js/jquery.jplayer.min.js"></script>
+  <script type="text/javascript">
+
+
+  function createPlayer(mp3_filename) {
+    $(document).ready(function(){
+      $("#jquery_jplayer_1").jPlayer({
+        ready: function () {
+          $(this).jPlayer("setMedia", {
+            mp3: mp3_filename,
+            //oga: "http://www.jplayer.org/audio/ogg/Miaow-07-Bubble.ogg",
+          });
+        },
+        swfPath: "/js",
+        supplied: "m4a, oga"
+      });
+    });
+  }
+
+	createPlayer('/path/to/mp3');
+
+  </script>
+
   </head>
   
   <body>
@@ -54,9 +84,9 @@
    <!-- side menu -->
    <div class="horizontal">
     <ul>
-    <li><a href="#">Home</a></li>
-    <li><a href="#">Demos</a></li>
-    <li><a href="/Rate_my_Demo/favourites/">Favourites</a></li>
+    <li><a href="/Rate_my_Demo">Home</a></li>
+    <li><a href="/Rate_my_Demo/demos/">Demos</a></li>
+    <li><a href="#">Favourites</a></li>
     <li><a href="#">Details</a></li>
     </ul>
    </div>
@@ -73,75 +103,73 @@
   <!-- start of the grid layout for the demo selection -->
   <div class="grid">
   <div id="services" class="cf">
-        <section class="service">
-              <div class="service-icon"><span class="icon-web"></span><br/>Info</div>
-              <div class="service-description">
-              	<div class="player_buttons">
-              	<span class="glyphicon glyphicon-play"></span>
-                </div>
-              </div>
-       </section>
+
+       {% for demo in demos %}
+
        <section class="service">
-              <div class="service-icon"><span class="icon-graphic"></span><br/>Info</div>
+              <div class="service-icon"><span class="icon-graphic"></span><br/><img border="0" src="{{ demo.img.url }}" alt="{{ demo.name }}" width="100" height="100"></div>
               <div class="service-description">
+
                 <div class="player_buttons">
+                <a onclick="this.firstChild.play()"><audio src="{{ demo.docfile.url }}"></audio>
               	<span class="glyphicon glyphicon-play"></span>
+                </a>
+                <a onclick="this.firstChild.play()" href="/Rate_my_Demo/favourites/">
+                <span class="glyphicon glyphicon-star" ></span>
+                </a>
+                {{ demo.title }}
                 </div>
-              </div>
-       </section>
-       <section class="service">
-              <div class="service-icon"><span class="icon-logo"></span><br/>Info</div>
-              <div class="service-description">
-                <div class="player_buttons">
-              	<span class="glyphicon glyphicon-play"></span>
-                </div>
-              </div>
-       </section>
-       <section class="service">
-              <div class="service-icon"><span class="icon-dev"></span><br/>Info</div>
-              <div class="service-description">
-                <div class="player_buttons">
-              	<span class="glyphicon glyphicon-play"></span>
-                </div>
-              </div>
-       </section>
-       <section class="service">
-              <div class="service-icon"><span class="icon-dev"></span><br/>Info</div>
-              <div class="service-description">
-                <div class="player_buttons">
-              	<span class="glyphicon glyphicon-play"></span>
-                </div>
-              </div>
-       </section>
-       <section class="service">
-              <div class="service-icon"><span class="icon-dev"></span><br/>Info</div>
-              <div class="service-description">
-                <div class="player_buttons">
-              	<span class="glyphicon glyphicon-play"></span>
-                </div>
+
               </div>
        </section>
 
-	</div>
-    </div> <!-- END #services -->
-    
-  <!-- audio player -->  
-  <div id="audio-player" class="audio-player-wrapper">
-  <div class="audio-player-image">
-    <span class="audio-player-song-name"></span>
+       {% endfor %}
+
+
+  </div>
+  </div> <!-- END #services -->
+
+  <div id="jquery_jplayer_1" class="jp-jplayer"></div>
+    <div id="jp_container_1" class="jp-audio">
+    <div class="jp-type-single">
+      <div class="jp-gui jp-interface">
+        <ul class="jp-controls">
+          <li><a href="javascript:;" class="jp-play" tabindex="1">play</a></li>
+          <li><a href="javascript:;" class="jp-pause" tabindex="1">pause</a></li>
+          <li><a href="javascript:;" class="jp-stop" tabindex="1">stop</a></li>
+          <li><a href="javascript:;" class="jp-mute" tabindex="1" title="mute">mute</a></li>
+          <li><a href="javascript:;" class="jp-volume-max" tabindex="1" title="max volume">max volume</a></li>
+        </ul>
+        <div class="jp-progress">
+          <div class="jp-seek-bar">
+            <div class="jp-play-bar"></div>
+          </div>
+        </div>
+        <div class="jp-volume-bar">
+          <div class="jp-volume-bar-value"></div>
+        </div>
+        <div class="jp-time-holder">
+          <div class="jp-current-time"></div>
+          <div class="jp-duration"></div>
+          <ul class="jp-toggles">
+            <li><a href="javascript:;" class="jp-repeat" tabindex="1" title="repeat">repeat</a></li>
+            <li><a href="javascript:;" class="jp-repeat-off" tabindex="1" title="repeat off">repeat off</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="jp-title">
+        <ul>
+          <li>Bubble</li>
+        </ul>
+      </div>
+      <div class="jp-no-solution">
+        <span>Update Required</span>
+        To play the media you will need to either update your browser to a recent version or update your <a href="http://get.adobe.com/flashplayer/" target=
+        "_blank">Flash plugin</a>.
+      </div>
+    </div>
   </div>
 
-  <div class="audio-player-controls">
-    <span class="audio-player-progress">
-      <span class="audio-player-progress-bar"></span>
-    </span>
-    <span class="audio-player-button-wrappers">
-      <a role="button" class="audio-player-button small icon-backward"></a>
-      <a role="button" class="audio-player-button audio-player-place-pause-button icon-play"></a>
-      <a role="button" class="audio-player-button small icon-forward"></a>
-    </span>
-  	</div>
-  </div>    
     {% if uploaded %}
        "Demo successfully uploaded!"
     {% endif %}
@@ -160,7 +188,6 @@
       ================================================== --> 
   <!-- Placed at the end of the document so the pages load faster -->  
   <script src="../../static/js/bootstrap.min.js"></script>
-  <script src="../../static/js/jquery-2.1.0.js"></script>
   <script type="text/javascript" src="../../static/js/source-of-grid.js"></script>
   
   </body>
