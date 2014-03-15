@@ -294,3 +294,7 @@ def favourites(request):
 
     print "FAVOURITE!"
     return render_to_response('Rate_my_Demo/artist.html', {'demos': demos}, context_instance=RequestContext(request))
+
+def user_details(request):
+
+    return render_to_response('Rate_my_Demo/user_details.html')

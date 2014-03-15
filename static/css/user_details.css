@@ -1,0 +1,98 @@
+
+/* position of components */
+.form-area{
+	width: 305px;
+	margin-top: 90px;
+	margin-left: auto;
+	margin-right: auto;
+	font-size: 16px;
+	position: relative;
+	color: #FFFFFF;
+}
+
+/* formatting for title label text */
+.title-label {
+	font-size: 22px;
+	margin-left: 44px;
+}
+
+/* position of checkboxes */
+input[type="checkbox"] {
+    margin-left: 46px;
+}
+
+/* formatting for checkbox label text*/
+label {
+font-size: 15px;
+font-weight: 100;
+}
+
+/* placeholder formatting */
+::-webkit-input-placeholder { color: #4D4D4D; font-size: 16px; }
+::-moz-placeholder { color: #4D4D4D; font-size: 16px; } /* firefox 19+ */
+:-ms-input-placeholder { color: #4D4D4D; font-size: 16px; } /* ie */
+input:-moz-placeholder { color: #4D4D4D; font-size: 16px; }
+
+/* formatting for all input text */
+input[type="text"], [type="password"]
+{
+	width: 300px;
+	height: 35px;
+	border-style: solid;
+	border-width: 1px;
+    border-radius: 8px;
+	border-color: #000000;
+	color: #000000;
+	font-weight: 100;
+}
+
+/* Combo boxes */
+.combobox{
+	margin-left: 104px;
+	color: #000000;
+}
+
+/* red border effect when text box is clicked */
+input[type=text]:focus, [type="password"]:focus {
+  box-shadow: 0 0 5px rgba(255, 0, 0, 1);
+  padding: 3px 0px 3px 3px;
+  margin: 0px 0px 0px 0px;
+  border: 1px solid rgba(255, 0, 0, 1);
+  color: #000000;
+  font-weight: 200;
+}
+
+/* formatting for browse label text */
+.browse-label {
+    margin-bottom: 5px;
+	margin-left: 35px;
+	font-size: 22px;
+}
+
+/* format of browse button */
+.browse-btn
+{
+	margin-left: 35px;
+	color: #FFFFFF;
+	font-size: 14px;
+	border-radius: 8px;
+	border-color: #000000;
+}
+	
+/* register button */
+.btn
+{
+margin-left: 83px;
+background-color: hsl(0, 69%, 22%) !important; 
+background-repeat: repeat-x; 
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#b42121", endColorstr="#5e1111"); 
+background-image: -khtml-gradient(linear, left top, left bottom, from(#b42121), to(#5e1111)); 
+background-image: -moz-linear-gradient(top, #b42121, #5e1111); 
+background-image: -ms-linear-gradient(top, #b42121, #5e1111); 
+background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #b42121), color-stop(100%, #5e1111)); 
+background-image: -webkit-linear-gradient(top, #b42121, #5e1111); background-image: -o-linear-gradient(top, #b42121, #5e1111); 
+background-image: linear-gradient(#b42121, #5e1111); border-color: #5e1111 #5e1111 hsl(0, 69%, 17%); color: #fff !important; 
+text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.33); 
+-webkit-font-smoothing: antialiased; 
+padding: 6px 40px;
+}
