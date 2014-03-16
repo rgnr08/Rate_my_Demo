@@ -3,23 +3,30 @@
 
 .player_buttons	{
 	text-align:center;
-	margin-left:15px;
+	margin-left:-15px;
+    width: 100px;
+    height: 200px;
 }
 
 .glyphicon-play	{
-	font-size:36px;
-	margin-left:-5px;
+	font-size:40px;
+    margin-top: 20px;
+	margin-left:20px;
+    text-align: center;
 }
 
-.glypicon-star {
-    font-size: 36px;
-    margin-left: 10px
+.glyphicon-star {
+    font-size: 40px;
+    margin-left:100px;
+    border:none !important;
+	outline:none;
+	background:transparent;
 }
 
 
 .glyphicon-refresh {
 	font-size:40px;
-	margin-top:20px;
+	margin-top:30px;
 	color:#FFF;
 	margin-left:-10px;
 }
