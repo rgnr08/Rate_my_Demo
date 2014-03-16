@@ -16,11 +16,8 @@
   <link href="../../static/css/grid.css" rel="stylesheet">
   <link href="../../static/css/player_buttons.css" rel="stylesheet">
   <link href="../../static/css/home.css" rel="stylesheet">
-  <link href="../../static/css/jplayer.blue.monday.css" rel="stylesheet">
   <link href="../../static/css/artist.css" rel="stylesheet">
 
-
-    
   <!-- Just for debugging purposes. Don't actually copy this line! -->
   <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
   
@@ -30,31 +27,10 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
       <![endif]--> 
     
-    <!-- Audio Player JS -->
+    <!-- JS -->
 
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
   <script type="text/javascript" src="../../static/js/jquery.jplayer.min.js"></script>
-  <script type="text/javascript">
-
-
-  function createPlayer(mp3_filename) {
-    $(document).ready(function(){
-      $("#jquery_jplayer_1").jPlayer({
-        ready: function () {
-          $(this).jPlayer("setMedia", {
-            mp3: mp3_filename,
-            //oga: "http://www.jplayer.org/audio/ogg/Miaow-07-Bubble.ogg",
-          });
-        },
-        swfPath: "/js",
-        supplied: "m4a, oga"
-      });
-    });
-  }
-
-	createPlayer('/path/to/mp3');
-
-  </script>
 
   </head>
   
@@ -84,9 +60,11 @@
    <!-- side menu -->
    <div class="horizontal">
     <ul>
-    <li><a href="/Rate_my_Demo">Home</a></li>
+    <li><img border="0" src="{{ rate_my_demo_user.thumbnail.url }}" alt="image" width="100" height="100"></li>
+    <li><div class="username">{{ rate_my_demo_user }}</div></li>
+    <li><a href="/Rate_my_Demo/home">Home</a></li>
     <li><a href="/Rate_my_Demo/demos/">Demos</a></li>
-    <li><a href="#">Favourites</a></li>
+    <li><a href="/Rate_my_Demo/favourites/">Favourites</a></li>
     <li><a href="/Rate_my_Demo/user_details/">Details</a></li>
     </ul>
    </div>
@@ -111,13 +89,18 @@
               <div class="service-description">
 
                 <div class="player_buttons">
-                <a onclick="this.firstChild.play()"><audio src="{{ demo.docfile.url }}"></audio>
-              	<span class="glyphicon glyphicon-play"></span>
-                </a>
-                <a onclick="this.firstChild.play()" href="/Rate_my_Demo/favourites/">
-                <span class="glyphicon glyphicon-star" ></span>
-                </a>
-                {{ demo.title }}
+                <a onclick="this.firstChild.play()"><audio src="{{ demo.docfile.url }}"></audio><span class="glyphicon glyphicon-play"></span></a>
+
+                <form action="/Rate_my_Demo/artist/" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                 <button type="submit" value="{{ demo }}" name="demo" class="glyphicon glyphicon-star"></button>
+                 <input name="user" type="hidden" value="{{ rate_my_demo_user }}">
+
+
+
+                </form>
+
+               {{ demo.title }}
                 </div>
 
               </div>
@@ -128,47 +111,6 @@
 
   </div>
   </div> <!-- END #services -->
-
-  <div id="jquery_jplayer_1" class="jp-jplayer"></div>
-    <div id="jp_container_1" class="jp-audio">
-    <div class="jp-type-single">
-      <div class="jp-gui jp-interface">
-        <ul class="jp-controls">
-          <li><a href="javascript:;" class="jp-play" tabindex="1">play</a></li>
-          <li><a href="javascript:;" class="jp-pause" tabindex="1">pause</a></li>
-          <li><a href="javascript:;" class="jp-stop" tabindex="1">stop</a></li>
-          <li><a href="javascript:;" class="jp-mute" tabindex="1" title="mute">mute</a></li>
-          <li><a href="javascript:;" class="jp-volume-max" tabindex="1" title="max volume">max volume</a></li>
-        </ul>
-        <div class="jp-progress">
-          <div class="jp-seek-bar">
-            <div class="jp-play-bar"></div>
-          </div>
-        </div>
-        <div class="jp-volume-bar">
-          <div class="jp-volume-bar-value"></div>
-        </div>
-        <div class="jp-time-holder">
-          <div class="jp-current-time"></div>
-          <div class="jp-duration"></div>
-          <ul class="jp-toggles">
-            <li><a href="javascript:;" class="jp-repeat" tabindex="1" title="repeat">repeat</a></li>
-            <li><a href="javascript:;" class="jp-repeat-off" tabindex="1" title="repeat off">repeat off</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="jp-title">
-        <ul>
-          <li>Bubble</li>
-        </ul>
-      </div>
-      <div class="jp-no-solution">
-        <span>Update Required</span>
-        To play the media you will need to either update your browser to a recent version or update your <a href="http://get.adobe.com/flashplayer/" target=
-        "_blank">Flash plugin</a>.
-      </div>
-    </div>
-  </div>
 
     {% if uploaded %}
        "Demo successfully uploaded!"

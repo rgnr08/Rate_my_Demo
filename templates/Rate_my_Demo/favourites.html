@@ -1,22 +1,131 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="utf-8">
-		<title>Upload your Demo!</title>
-	</head>
+  <!DOCTYPE html>
+  <html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="shortcut icon" href="../../assets/ico/favicon.ico">
+  <title>Your Demos</title>
 
-	<body>
-		<!-- List of uploaded documents -->
-		{% if demos %}
-			<ul>
-			{% for demo in demos %}
-			    Your uploaded demo: <li><a href="{{ demo.docfile.url }}">{{ demo.docfile.name }}</a></li>
-                </br>
-                Your thumbnail: <li><img border="0" src="{{ demo.img.url }}" alt="Pulpit rock" width="304" height="228">
-         {% endfor %}
-         {% endif %}
+  <!-- Bootstrap & core CSS -->
+  <link href="../../static/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../../static/css/bootstrap.css" rel="stylesheet">
+  <link href="../../static/css/audioplayer.css" rel="stylesheet">
+  <link href="../../static/css/artist.css" rel="stylesheet">
+  <link href="../../static/css/artist_tracksgrid.css" rel="stylesheet">
 
-        	</ul>
-    </body>
-</html>
 
+  <!-- Audio Player JS -->
+
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+
+
+  <!-- Just for debugging purposes. Don't actually copy this line! -->
+  <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  <body>
+
+  <!-- top panel -->
+  <div class="top">
+	<div class="logo">
+    <div class="container">
+    	<img src="../../static/logo.jpg" alt="RMD Logo">
+    </div>
+    </div>
+  </div>
+
+  <div class="border">
+  </div>
+
+  <!--main content panel where user profile and most functionality is displayed -->
+  <div class="container">
+
+     <!-- side menu -->
+   <div class="horizontal">
+    <ul>
+
+    <li><h1>FAVOURITES</h1></li>
+    <li><img border="0" src="{{ rate_my_demo_user.thumbnail.url }}" alt="image" width="100" height="100"></li>
+    <li>{{ rate_my_demo_user }}</li>
+    </br>
+    <li><a href="/Rate_my_Demo/home/">Home</a></li>
+    <li><a href="#">Favourites</a></li>
+    <li><a href="/Rate_my_Demo/user_details/">Details</a></li>
+    </ul>
+   </div>
+
+  <!-- randomizer button -->
+  <div class="button-group">
+	 <div class="controls">
+		<a href="#" class="btn btn-primary btn-default"><span class="glyphicon glyphicon-cloud-upload"></span> Upload</a>
+
+	 </div>
+  </div>
+
+  <div class="logout">
+       <button type="submit" class="btn"value="submit">Log out</button>
+  </div>
+   <!-- END randomizer button -->
+{% if favs %}
+{% for fav in favs %}
+
+  <p>
+  <div class="demogrid">
+
+    	<div class="thumbnail-slot"><img border="0" src="{{ fav.demo.img.url }}" alt="{{ fav.demo.name }}" width="90" height="90">
+        <div class="gridplay">
+        <button type="button" class="play">
+        <a onclick="this.firstChild.play()"><audio src="{{ fav.demo.docfile.url }}"></audio>
+        <span class="glyphicon glyphicon-play"></span>
+        </button>
+        </a>
+        </div>
+        </div>
+
+        <div class="track-info"> {{ fav.demo.title }} </div>
+        <div class="votes"><span class="glyphicon glyphicon-arrow-up"></span> {{ fav.demo.up }}<span class="glyphicon glyphicon-arrow-down"> {{ fav.demo.down }}</span></div>
+
+        <div class="delete">
+        <button type="button" class="delete" onclick="alert('Are you sure?')">
+        <span class=" glyphicon glyphicon-remove-circle"></span>
+        </button>
+        </div>
+  </div>
+  </p>
+
+{% endfor %}
+{% endif %}
+  </div>
+
+
+
+
+
+  </div>
+
+  <!-- bottom navigation bar -->
+  <div class="navbar navbar-inverse navbar-fixed-bottom" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
+       <a class="navbar-brand" href="about_page.html">About</a> <a class="navbar-brand" href="bootstrap-3.1.1-dist/contact.html">Contact</a>
+	  </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap core JavaScript
+      ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+  <script src="../../static/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="../../static/js/source-of-grid.js"></script>
+
+  </body>
+  </html>

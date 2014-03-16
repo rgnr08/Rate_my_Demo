@@ -7,16 +7,18 @@
   <meta name="description" content="">
   <meta name="author" content="">
   <link rel="shortcut icon" href="../../assets/ico/favicon.ico">
-  <title>Hello</title>
+  <title>Artist Page</title>
   
   <!-- Bootstrap core CSS -->
   <link href="../../static/css/bootstrap.min.css" rel="stylesheet">
-  <link href="../../static/css/bootstrap.css" rel="stylesheet">
   <link href="../../static/css/audioplayer.css" rel="stylesheet">
+  <link href="../../static/css/bootstrap.css" rel="stylesheet">
+  <link href="../../static/css/grid.css" rel="stylesheet">
   <link href="../../static/css/player_buttons.css" rel="stylesheet">
   <link href="../../static/css/home.css" rel="stylesheet">
-  <link href="../../static/css/listener.css" rel="stylesheet">
-    
+  <link href="../../static/css/jplayer.blue.monday.css" rel="stylesheet">
+  <link href="../../static/css/artist.css" rel="stylesheet">
+
   <!-- Just for debugging purposes. Don't actually copy this line! -->
   <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
   
@@ -26,6 +28,11 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
       <![endif]--> 
     
+    <!-- JS -->
+
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+  <script type="text/javascript" src="../../static/js/jquery.jplayer.min.js"></script>
+
   </head>
   
   <body>
@@ -54,90 +61,61 @@
    <!-- side menu -->
    <div class="horizontal">
     <ul>
-    <li><a href="#">Home</a></li>
-    <li><a href="#">Favourites</a></li>
-    <li><a href="#">Details</a></li>
+    <li><img border="0" src="{{ rate_my_demo_user.thumbnail.url }}" alt="image" width="100" height="100"></li>
+    <li>{{ rate_my_demo_user }}</li>
+    <li><a href="/Rate_my_Demo/home">Home</a></li>
+    <li><a href="/Rate_my_Demo/demos/">Demos</a></li>
+    <li><a href="/Rate_my_Demo/favourites/">Favourites</a></li>
+    <li><a href="/Rate_my_Demo/user_details/">Details</a></li>
     </ul>
    </div>
   
    <div class="button-group">
 	 <div class="controls">
-		<a href="/Rate_my_Demo/logout/" ><button type="submit" class="btn"value="submit">Log out</button></a>
+		<a href="/Rate_my_Demo/upload_page/" class="btn btn-primary btn-default"><span class="glyphicon glyphicon-cloud-upload"></span> Upload</a>
 	 </div>	
-   </div>
+  </div>
   
+  <div class="logout">
+       <a href="/Rate_my_Demo/logout/" ><button type="submit" class="btn"value="submit">Log out</button></a>
+  </div>
   <!-- start of the grid layout for the demo selection -->
   <div class="grid">
   <div id="services" class="cf">
-        <section class="service">
-              <div class="service-icon"><span class="icon-web"></span><br/>Info</div>
-              <div class="service-description">
-              	<div class="player_buttons">
-              	<span class="glyphicon glyphicon-play"></span>
-                </div>
-              </div>
-       </section>
-       <section class="service">
-              <div class="service-icon"><span class="icon-graphic"></span><br/>Info</div>
-              <div class="service-description">
-                <div class="player_buttons">
-              	<span class="glyphicon glyphicon-play"></span>
-                </div>
-              </div>
-       </section>
-       <section class="service">
-              <div class="service-icon"><span class="icon-logo"></span><br/>Info</div>
-              <div class="service-description">
-                <div class="player_buttons">
-              	<span class="glyphicon glyphicon-play"></span>
-                </div>
-              </div>
-       </section>
-       <section class="service">
-              <div class="service-icon"><span class="icon-dev"></span><br/>Info</div>
-              <div class="service-description">
-                <div class="player_buttons">
-              	<span class="glyphicon glyphicon-play"></span>
-                </div>
-              </div>
-       </section>
-       <section class="service">
-              <div class="service-icon"><span class="icon-dev"></span><br/>Info</div>
-              <div class="service-description">
-                <div class="player_buttons">
-              	<span class="glyphicon glyphicon-play"></span>
-                </div>
-              </div>
-       </section>
-       <section class="service">
-              <div class="service-icon"><span class="icon-dev"></span><br/>Info</div>
-              <div class="service-description">
-                <div class="player_buttons">
-              	<span class="glyphicon glyphicon-play"></span>
-                </div>
-              </div>
-       </section>
-	</div>
-    </div> <!-- END #services -->
-    
-  <!-- audio player -->  
-  <div id="audio-player" class="audio-player-wrapper">
-  <div class="audio-player-image">
-    <span class="audio-player-song-name"></span>
-  </div>
 
-  <div class="audio-player-controls">
-    <span class="audio-player-progress">
-      <span class="audio-player-progress-bar"></span>
-    </span>
-    <span class="audio-player-button-wrappers">
-      <a role="button" class="audio-player-button small icon-backward"></a>
-      <a role="button" class="audio-player-button audio-player-place-pause-button icon-play"></a>
-      <a role="button" class="audio-player-button small icon-forward"></a>
-    </span>
-  	</div>
-  </div> 
-    
+       {% for demo in demos %}
+
+       <section class="service">
+              <div class="service-icon"><span class="icon-graphic"></span><br/><img border="0" src="{{ demo.img.url }}" alt="{{ demo.name }}" width="100" height="100"></div>
+              <div class="service-description">
+
+                <div class="player_buttons">
+                <a onclick="this.firstChild.play()"><audio src="{{ demo.docfile.url }}"></audio><span class="glyphicon glyphicon-play"></span></a>
+
+                <form action="/Rate_my_Demo/artist/" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                 <button type="submit" value="{{ demo }}" name="demo" class="glyphicon glyphicon-star"></button>
+                 <input name="user" type="hidden" value="{{ rate_my_demo_user }}">
+
+
+
+                </form>
+
+               {{ demo.title }}
+                </div>
+
+              </div>
+       </section>
+
+       {% endfor %}
+
+
+  </div>
+  </div> <!-- END #services -->
+
+    {% if uploaded %}
+       "Demo successfully uploaded!"
+    {% endif %}
   </div>
   
   <!-- bottom navigation bar -->
@@ -153,7 +131,6 @@
       ================================================== --> 
   <!-- Placed at the end of the document so the pages load faster -->  
   <script src="../../static/js/bootstrap.min.js"></script>
-  <script src="../../static/js/jquery-2.1.0.js"></script>
   <script type="text/javascript" src="../../static/js/source-of-grid.js"></script>
   
   </body>

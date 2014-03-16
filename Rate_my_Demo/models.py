@@ -61,6 +61,7 @@ class Demo(models.Model):
 
 class Favourites(models.Model):
 
+
     demo = models.ForeignKey(Demo,  related_name="DemoFav")
     user = models.ForeignKey(RateMyDemoUser)
 

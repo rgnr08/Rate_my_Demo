@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.models import User
-from Rate_my_Demo.models import RateMyDemoUser, Demo
+from Rate_my_Demo.models import RateMyDemoUser, Demo, Favourites
 
 
 class UserForm(forms.ModelForm):
@@ -63,3 +63,9 @@ class DemoForm(forms.ModelForm):
     class Meta:
         model = Demo
         fields = ('docfile', 'genre', 'title', 'img')
+
+
+class FavForm(forms.ModelForm):
+    class Meta:
+        model = Favourites
+        fields = ('user', 'demo')

@@ -9,6 +9,9 @@ class DemoAdmin(admin.ModelAdmin):
 class UserAdmin(admin.ModelAdmin):
     list_display = ('user', 'usertype', 'genre', 'location')
 
-admin.site.register(Favourites)
+class FavAdmin(admin.ModelAdmin):
+    list_display = ('demo', 'user')
+
+admin.site.register(Favourites, FavAdmin)
 admin.site.register(Demo, DemoAdmin)
 admin.site.register(RateMyDemoUser, UserAdmin)

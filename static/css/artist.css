@@ -33,7 +33,7 @@ ul.horizontal li{
 .grid	{
 	text-align:center;
 	width: 600px;
-	margin-top:-230px;
+	margin-top:-340px;
 	margin-left:310px;
 }
 
@@ -84,17 +84,6 @@ ul.horizontal li{
 }
 
 #services .service .service-description:hover { cursor: pointer; }
-
-@font-face {
-       font-family: "slidable-grid";
-       src:url("fonts/slidable-grid.eot");
-       src:url("fonts/slidable-grid.eot?#iefix") format("embedded-opentype"),
-              url("fonts/slidable-grid.woff") format("woff"),
-              url("fonts/slidable-grid.ttf") format("truetype"),
-              url("fonts/slidable-grid.svg#slidable-grid") format("svg");
-       font-weight: normal;
-       font-style: normal;
-}
 
 [class^="icon-"]:before,
 [class*=" icon-"]:before {
@@ -174,7 +163,7 @@ body {
 }
 
 .btn 	{
-	margin-top:120px;
+	margin-top:240px;
 	margin-left: -975px;
 	width:200px;
 	background-color: hsl(0, 69%, 22%) !important; 
@@ -192,5 +181,14 @@ body {
 }
 
 .logout	{
-	margin-top:-100px;
+	margin-top:-225px;
+}
+
+.username {
+   color:#000;
+   font-size: 25px;
+   margin-left: 105px;
+   margin-top: -30px;
+   font-style:oblique ;
+   font-weight: bold;
 }

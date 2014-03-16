@@ -1,7 +1,7 @@
 from django.template import RequestContext
 from django.shortcuts import render_to_response
-from Rate_my_Demo.forms import UserForm, RateMyDemoUserForm, DemoForm
-from Rate_my_Demo.models import Demo, RateMyDemoUser
+from Rate_my_Demo.forms import UserForm, RateMyDemoUserForm, DemoForm, FavForm
+from Rate_my_Demo.models import Demo, RateMyDemoUser, Favourites
 from django.contrib.auth import authenticate, login
 from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth.decorators import login_required
@@ -25,9 +25,15 @@ def index(request):
     # We make use of the shortcut function to make our lives easier.
     # Note that the first parameter is the template we wish to use.
 
+
     #rate_my_demo_user = RateMyDemoUser.objects.get(user=request.user)
     demos = Demo.objects.all()
     print demos
+    favs = Favourites.objects.all()
+    print "These are favs"
+    print favs.count()
+
+
 
 
     # return render_to_response('Rate_my_Demo/favourites.html', {'demos': demos}, context_instance=RequestContext(request))
@@ -37,6 +43,13 @@ def index(request):
     #The following code was substituted by what's above
     #return HttpResponse("Rango says hello world! <a href='/rango/about'>about</a>")
 
+def home(request):
+    context = RequestContext(request)
+    rate_my_demo_user = RateMyDemoUser.objects.get(user=request.user)
+    demos = Demo.objects.all()
+
+
+    return render_to_response('Rate_my_Demo/home.html', {'demos': demos, 'rate_my_demo_user': rate_my_demo_user},  context)
 
 def about(request):
     #print request.META['USER']
@@ -211,18 +224,18 @@ def user_login(request):
                 if rate_my_demo_user.usertype == 'Artist':
                     print 'user is an artist'
                     demos = Demo.objects.all()
-                    return render_to_response('Rate_my_Demo/artist.html', {'demos': demos})
+                    return HttpResponseRedirect('/Rate_my_Demo/artist/', {'demos': demos})
                 else:
                     print 'user is listener!!'
                     demos = Demo.objects.all()
-                    return render_to_response('Rate_my_Demo/listener.html', {'demos': demos})
+                    return HttpResponseRedirect('/Rate_my_Demo/listener/', {'demos': demos})
             else:
                 # An inactive account was used - no logging in!
                 return HttpResponse("Your Rate my Demo account is disabled.")
         else:
             # Bad login details were provided. So we can't log the user in.
             print "Invalid login details: {0}, {1}".format(username, password)
-            return render_to_response('Rate_my_Demo/bad_details.html')
+            return render_to_response('/Rate_my_Demo/bad_details/')
 
     # The request is not a HTTP POST, so display the login form.
     # This scenario would most likely be a HTTP GET.
@@ -232,12 +245,7 @@ def user_login(request):
         return render_to_response('Rate_my_Demo/login_page.html', {}, context)
 
 
-@login_required
-def restricted(request):
-    return HttpResponse("Since you're logged in, you can see this text!")
 
-
-# Use the login_required() decorator to ensure only those logged in can access the view.
 @login_required
 def user_logout(request):
     # Since we know the user is logged in, we can now just log them out.
@@ -246,10 +254,56 @@ def user_logout(request):
     # Take the user back to the homepage.
     return HttpResponseRedirect('/Rate_my_Demo/')
 
+################################################################################################
 @login_required
 def artist(request):
 
-    return HttpResponseRedirect('/Rate_my_Demo/artist.html/')
+    context = RequestContext(request)
+    if request.method == 'POST':
+        form=FavForm(data=request.POST)
+
+        print "METHOD IS POST!"
+        print request.POST
+
+        if request.POST['demo']:
+            print request.POST['demo']
+
+        if request.POST['user']:
+            print request.POST['user']
+
+        # rate_my_demo_user = RateMyDemoUser.objects.get(user=request.user)
+        #
+        # newfav=Favourites()
+        # newfav.user=rate_my_demo_user
+
+        rate_my_demo_user = RateMyDemoUser.objects.get(user=request.user)
+        favdemo = Demo.objects.get(title=request.POST['demo'])
+
+        newfav=Favourites()
+        newfav.user=rate_my_demo_user
+        newfav.demo=favdemo
+        newfav.save()
+
+        demos = Demo.objects.all()
+
+        return HttpResponseRedirect('/Rate_my_Demo/artist/',{'demos': demos, 'form': form},context)
+
+
+
+    else:
+        print "METHOD IS NOT POST!"
+
+        rate_my_demo_user = RateMyDemoUser.objects.get(user=request.user)
+        form = FavForm(request.POST)
+        demos = Demo.objects.all()
+        return render_to_response('Rate_my_Demo/artist.html', {'demos': demos, 'form': form, 'rate_my_demo_user': rate_my_demo_user}, context)
+
+#################################################################################################
+
+@login_required
+def listener(request):
+
+    return HttpResponseRedirect('/Rate_my_Demo/listener.html/')
 
 @login_required
 def check_usertype(request):
@@ -264,21 +318,22 @@ def check_usertype(request):
     if RMDuser.usertype == 'Artist':
         print 'user is an artist'
         demos = Demo.objects.all()
-        return render_to_response('Rate_my_Demo/artist.html', {'demos': demos})
+        return HttpResponseRedirect('/Rate_my_Demo/artist/', {'demos': demos})
     else:
         print 'user is listener!!'
         demos = Demo.objects.all()
-        return render_to_response('Rate_my_Demo/listener.html', {'demos': demos})
+        return HttpResponseRedirect('/Rate_my_Demo/listener/', {'demos': demos})
+
 
 def reg_success(request):
 
     return HttpResponseRedirect('/Rate_my_Demo/registration_successful.html/')
 
+
 def contact(request):
-    #print request.META['USER']
-    #user = request.META['USER']
-    #return HttpResponse("Rango says: here is the about page blood! <a href='/rango/'>Index</a>")
+
     return render_to_response('Rate_my_Demo/contact.html')
+
 
 def demos(request):
 
@@ -287,13 +342,16 @@ def demos(request):
 
 
 
-    return render_to_response('Rate_my_Demo/demos.html', {'demos': demos}, context_instance=RequestContext(request))
+    return render_to_response('Rate_my_Demo/demos.html', {'demos': demos, 'rate_my_demo_user': rate_my_demo_user}, context_instance=RequestContext(request))
+
 
 def favourites(request):
-    demos = Demo.objects.all()
 
-    print "FAVOURITE!"
-    return render_to_response('Rate_my_Demo/artist.html', {'demos': demos}, context_instance=RequestContext(request))
+    rate_my_demo_user = RateMyDemoUser.objects.get(user=request.user)
+    favs = Favourites.objects.filter(user=rate_my_demo_user)
+
+    return render_to_response('Rate_my_Demo/favourites.html', {'favs': favs, 'rate_my_demo_user': rate_my_demo_user}, context_instance=RequestContext(request))
+
 
 def user_details(request):
 
