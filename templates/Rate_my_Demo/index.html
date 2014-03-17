@@ -92,10 +92,12 @@
               <div class="service-description">
 
                 <div class="player_buttons">
-                <a onclick="this.firstChild.play()"><audio src="{{ demo.docfile.url }}"></audio>
-              	<span class="glyphicon glyphicon-play"></span>
+
+                <audio id="demo" src="{{ demo.docfile.url }}"></audio>
+                <a href="javascript:;" onclick="document.getElementById('demo').play();">
+                <span class="glyphicon glyphicon-play"></span>
                 </a>
-                <a onclick="this.firstChild.pause()"><audio src="{{ demo.docfile.url }}"></audio>
+                <a href="javascript:;" onclick="document.getElementById('demo').pause();">
                 <span class="glyphicon glyphicon-pause"></span>
                 </a>
                 <div class="track_listing">

@@ -21,32 +21,11 @@
   <link href="../../static/css/artist_tracksgrid.css" rel="stylesheet">
 
     
-  <!-- Audio Player JS -->
+  <!-- JS -->
     
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
   <script type="text/javascript" src="../../static/js/jquery.jplayer.min.js"></script>
-  <script type="text/javascript">
-  
-  
-  function createPlayer(mp3_filename) {
-    $(document).ready(function(){
-      $("#jquery_jplayer_1").jPlayer({
-        ready: function () {
-          $(this).jPlayer("setMedia", {
-            mp3: mp3_filename,
-            //oga: "http://www.jplayer.org/audio/ogg/Miaow-07-Bubble.ogg",
-          });
-        },
-        swfPath: "/js",
-        supplied: "m4a, oga"
-      });
-    });
-  }
- 	
-	createPlayer('/path/to/mp3');
 
-  </script> 
-    
   <!-- Just for debugging purposes. Don't actually copy this line! -->
   <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
   
