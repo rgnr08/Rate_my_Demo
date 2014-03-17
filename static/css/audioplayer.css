@@ -27,7 +27,9 @@ html {
 
 /* line 24, /Users/Rose/.rbenv/versions/1.9.3-p0/lib/ruby/gems/1.9.1/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 ol, ul {
-  list-style: none; }
+  list-style: none;
+  line-height: 28px;
+}
 
 /* line 26, /Users/Rose/.rbenv/versions/1.9.3-p0/lib/ruby/gems/1.9.1/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 table {

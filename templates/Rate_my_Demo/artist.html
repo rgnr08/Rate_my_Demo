@@ -15,7 +15,6 @@
   <link href="../../static/css/bootstrap.css" rel="stylesheet">
   <link href="../../static/css/grid.css" rel="stylesheet">
   <link href="../../static/css/player_buttons.css" rel="stylesheet">
-  <link href="../../static/css/home.css" rel="stylesheet">
   <link href="../../static/css/artist.css" rel="stylesheet">
 
   <!-- Just for debugging purposes. Don't actually copy this line! -->
@@ -28,7 +27,6 @@
       <![endif]--> 
     
     <!-- JS -->
-
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
 
 
@@ -51,18 +49,19 @@
   <!--main content panel where user profile and most functionality is displayed -->
    <div class="container">
   
-   <!-- randomizer button -->
-   <div class="randomizer">
-  	 <span class="glyphicon glyphicon-refresh">
-     </span>
-   </div>
+  <!-- randomizer button -->
+  <div class="randomizer">
+    <button type="button" class="randomizer" value="Refresh" onclick="history.go(0)">
+  	    <span class="glyphicon glyphicon-refresh"></span>
+     </button>
+  </div>
   
    <!-- side menu -->
    <div class="horizontal">
     <ul>
     <li><img border="0" src="{{ rate_my_demo_user.thumbnail.url }}" alt="image" width="100" height="100"></li>
     <li><div class="username">{{ rate_my_demo_user }}</div></li>
-    <li><a href="/Rate_my_Demo/home/">Home</a></li>
+    <li><a href="/Rate_my_Demo/artist/">Home</a></li>
     <li><a href="/Rate_my_Demo/demos/">Demos</a></li>
     <li><a href="/Rate_my_Demo/favourites/">Favourites</a></li>
     <li><a href="/Rate_my_Demo/user_details/">Details</a></li>
@@ -72,11 +71,12 @@
    <div class="button-group">
 	 <div class="controls">
 		<a href="/Rate_my_Demo/upload_page/" class="btn btn-primary btn-default"><span class="glyphicon glyphicon-cloud-upload"></span> Upload</a>
-	 </div>	
-  </div>
+	 </div>
   
   <div class="logout">
        <a href="/Rate_my_Demo/logout/" ><button type="submit" class="btn"value="submit">Log out</button></a>
+  </div>
+
   </div>
   <!-- start of the grid layout for the demo selection -->
   <div class="grid">
@@ -84,37 +84,36 @@
 
        {% for demo in demos %}
 
-
-         <p>
-          <b id="like_count{{demo.id}}">{{ demo.up }}</b>
-          <b id="unlike_count{{demo.id}}">{{ demo.down }}</b>
-             {% if user.is_authenticated %}
-                  <button class ="likes" data-demoid="{{demo.id}}"  type="button">Like</button>
-                  <button class ="unlikes" data-demoid2="{{demo.id}}"  type="button">Unlike</button>
-             {% endif %}
-         </p>
-
-
-
        <section class="service">
-              <div class="service-icon"><span class="icon-graphic"></span><br/><img border="0" src="{{ demo.img.url }}" alt="{{ demo.name }}" width="100" height="100"></div>
+              <div class="service-icon"><span class="icon-graphic"></span><br/><img border="0" src="{{ demo.img.url }}" alt="{{ demo.name }}" width="160" height="160"></div>
               <div class="service-description">
-
                 <div class="player_buttons">
-                <a onclick="this.firstChild.play()"><audio src="{{ demo.docfile.url }}"></audio><span class="glyphicon glyphicon-play"></span></a>
 
-                <form action="/Rate_my_Demo/artist/" method="post" enctype="multipart/form-data">
+                    <form action="/Rate_my_Demo/artist/" method="post" enctype="multipart/form-data">
+                    <audio id="{{ demo.id }}" src="{{ demo.docfile.url }}"></audio>
+                    <a href="javascript:;" onclick="document.getElementById('{{ demo.id }}').play();">
+                    <span class="glyphicon glyphicon-play"></span>
+                    </a>
+                    <a href="javascript:;" onclick="document.getElementById('{{ demo.id }}').pause();">
+                    <span class="glyphicon glyphicon-pause"></span>
+                    </a>
                     {% csrf_token %}
-                 <button type="submit" value="{{ demo }}" name="demo" class="glyphicon glyphicon-star"></button>
-                 <input name="user" type="hidden" value="{{ rate_my_demo_user }}">
+                    <button class="fav" type="submit" value="{{ demo }}" name="demo"><span class="glyphicon glyphicon-star"></span></button>
+                    <input name="user" type="hidden" value="{{ rate_my_demo_user }}">
+                    </form>
 
-
-
-                </form>
-
-               {{ demo.title }}
-                </div>
-
+                     <div class="track_listing">
+                       {{ demo.title }}
+                     </div>
+                     <div class="ratings">
+                     {% if user.is_authenticated %}
+                     <b id="like_count{{demo.id}}">{{ demo.up }}</b>
+                     <button class ="likes" data-demoid="{{demo.id}}"  type="button"><span class="glyphicon glyphicon-arrow-up"></span></button>
+                     <button class ="unlikes" data-demoid2="{{demo.id}}"  type="button"><span class="glyphicon glyphicon-arrow-down"></span></button>
+                     <b id="unlike_count{{demo.id}}">{{ demo.down }}</b>
+                     {% endif %}
+                        </div>
+                 </div>
               </div>
        </section>
 

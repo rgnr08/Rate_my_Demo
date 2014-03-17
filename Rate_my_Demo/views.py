@@ -235,7 +235,7 @@ def user_login(request):
         else:
             # Bad login details were provided. So we can't log the user in.
             print "Invalid login details: {0}, {1}".format(username, password)
-            return render_to_response('/Rate_my_Demo/bad_details/')
+            return render_to_response('Rate_my_Demo/bad_details.html')
 
     # The request is not a HTTP POST, so display the login form.
     # This scenario would most likely be a HTTP GET.
@@ -336,9 +336,25 @@ def contact(request):
 
 
 def demos(request):
+    print "HOLAAAA"
+    if request.method == 'POST':
+        print "HOLAAA2"
+        demo = request.POST['demo']
+        print demo
 
-    rate_my_demo_user = RateMyDemoUser.objects.get(user=request.user)
-    demos = Demo.objects.filter(user=rate_my_demo_user)
+        todel = Demo.objects.filter(id=demo)
+
+        todel.delete()
+
+        rate_my_demo_user = RateMyDemoUser.objects.get(user=request.user)
+        demos = Favourites.objects.filter(user=rate_my_demo_user)
+
+        return HttpResponseRedirect('/Rate_my_Demo/demos/', {'demos': demos, 'rate_my_demo_user': rate_my_demo_user})
+
+    else:
+
+        rate_my_demo_user = RateMyDemoUser.objects.get(user=request.user)
+        demos = Demo.objects.filter(user=rate_my_demo_user)
 
 
 
@@ -346,11 +362,26 @@ def demos(request):
 
 
 def favourites(request):
+    print "HOLAAAA"
+    if request.method == 'POST':
+        print "HOLAAA2"
+        fav = request.POST['fav']
+        print fav
 
-    rate_my_demo_user = RateMyDemoUser.objects.get(user=request.user)
-    favs = Favourites.objects.filter(user=rate_my_demo_user)
+        todel = Favourites.objects.filter(id=fav)
 
-    return render_to_response('Rate_my_Demo/favourites.html', {'favs': favs, 'rate_my_demo_user': rate_my_demo_user}, context_instance=RequestContext(request))
+        todel.delete()
+
+        rate_my_demo_user = RateMyDemoUser.objects.get(user=request.user)
+        favs = Favourites.objects.filter(user=rate_my_demo_user)
+
+        return render_to_response('Rate_my_Demo/favourites.html', {'favs': favs, 'rate_my_demo_user': rate_my_demo_user}, context_instance=RequestContext(request))
+
+    else:
+        rate_my_demo_user = RateMyDemoUser.objects.get(user=request.user)
+        favs = Favourites.objects.filter(user=rate_my_demo_user)
+
+        return render_to_response('Rate_my_Demo/favourites.html', {'favs': favs, 'rate_my_demo_user': rate_my_demo_user}, context_instance=RequestContext(request))
 
 
 def user_details(request):
@@ -400,3 +431,5 @@ def unlike_demo(request):
             demo.save()
 
     return HttpResponse(unlikes)
+
+
