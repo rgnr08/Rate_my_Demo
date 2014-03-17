@@ -87,8 +87,10 @@
 
          <p>
           <b id="like_count{{demo.id}}">{{ demo.up }}</b>
+          <b id="unlike_count{{demo.id}}">{{ demo.down }}</b>
              {% if user.is_authenticated %}
-                   <button class ="likes" data-demoid="{{demo.id}}"  type="button">Like</button>
+                  <button class ="likes" data-demoid="{{demo.id}}"  type="button">Like</button>
+                  <button class ="unlikes" data-demoid2="{{demo.id}}"  type="button">Unlike</button>
              {% endif %}
          </p>
 

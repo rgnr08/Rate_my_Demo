@@ -377,3 +377,26 @@ def like_demo(request):
             demo.save()
 
     return HttpResponse(likes)
+
+@login_required
+def unlike_demo(request):
+    print "A"
+    context = RequestContext(request)
+    demo_id2 = None
+    print "B"
+
+    if request.method == 'GET':
+        print "C"
+        print request.GET
+        demo_id2 = request.GET['demo_id2']
+        print demo_id2
+
+    unlikes = 0
+    if demo_id2:
+        demo = Demo.objects.get(id=int(demo_id2))
+        if demo:
+            unlikes = demo.down + 1
+            demo.down = unlikes
+            demo.save()
+
+    return HttpResponse(unlikes)
