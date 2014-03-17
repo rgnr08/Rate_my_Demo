@@ -2,7 +2,7 @@
 /* position of components */
 .form-area{
 	width: 305px;
-	margin-top: 90px;
+	margin-top: 00px;
 	margin-left: auto;
 	margin-right: auto;
 	font-size: 16px;
@@ -82,7 +82,7 @@ input[type=text]:focus, [type="password"]:focus {
 /* register button */
 .btn
 {
-margin-left: 83px;
+margin-left: 40px;
 background-color: hsl(0, 69%, 22%) !important; 
 background-repeat: repeat-x; 
 filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#b42121", endColorstr="#5e1111"); 

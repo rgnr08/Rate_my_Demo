@@ -15,6 +15,13 @@
     text-align: center;
 }
 
+.glyphicon-pause {
+    font-size:40px;
+    margin-top: 20px;
+	margin-left:20px;
+    text-align: center;
+}
+
 .glyphicon-star {
     font-size: 40px;
     margin-left:100px;
@@ -22,7 +29,6 @@
 	outline:none;
 	background:transparent;
 }
-
 
 .glyphicon-refresh {
 	font-size:40px;
@@ -33,11 +39,20 @@
 
 .glyphicon-refresh:hover {
 	font-size:40px;
-	margin-top:20px;
+	margin-top:30px;
 	color:#FFF;
 	margin-left:-10px;
 	-animation: spin .7s infinite linear;
 	-webkit-animation: spin2 .7s infinite linear;
+}
+
+@-webkit-keyframes spin2	{
+	from {-webkit-transform:rotate(0deg);}
+	to	{-webkit-transform:rotate(360deg);}}
+
+@keyframes spin	{
+	from {transform:scale(1) rotate(0deg);}
+	to	{transform:scale(1) rotate(360deg);}
 }
 
 .randomizer	{
@@ -46,22 +61,4 @@
 	border:none !important;
 	outline:none;
 	background:transparent;
-}
-
-.text_padding	{
-	padding:30px;
-}
-
-.glyphicon-refresh-animate:hover	{
-	-animation: spin .7s infinite linear;
-	-webkit-animation: spin2 .7s infinite linear;
-}
-
-@-webkit-keyframes spin2	{
-	from {-webkit-transform:rotate(0deg);}
-	to	{-webkit-transform:rotate(360deg);}}
-	
-@keyframes spin	{
-	from {transform:scale(1) rotate(0deg);}
-	to	{transform:scale(1) rotate(360deg);}
 }

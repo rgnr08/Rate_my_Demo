@@ -44,7 +44,7 @@ body {
 
 .btn 	{
 	margin-top:20px;
-	margin-left: -975px;
+	margin-left: -1100px;
 	width:200px;
 	background-color: hsl(0, 69%, 22%) !important; 
 	background-repeat: repeat-x; 
@@ -58,4 +58,13 @@ body {
 	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.33); 
 	-webkit-font-smoothing: antialiased; 
 	padding: 6px 40px;
+}
+
+a{
+	color:#FFF;
+	font-size:20px;
+	}
+
+a:hover {
+    color:#B01212 ;
 }

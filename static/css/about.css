@@ -17,7 +17,8 @@ margin-left: 110px;
 .btn
 {
 margin-top: -20px;	
-margin-left: 25px;
+margin-left: 30px;
+margin-right: auto;
 background-color: hsl(0, 69%, 22%) !important; 
 background-repeat: repeat-x; 
 filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#b42121", endColorstr="#5e1111"); 
