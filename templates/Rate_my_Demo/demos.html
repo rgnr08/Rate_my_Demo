@@ -5,14 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="">
   <meta name="author" content="">
-  <link rel="shortcut icon" href="../../static/favicon.ico">
+  <link rel="shortcut icon" href="../../assets/ico/favicon.ico">
   <title>Your Demos</title>
   
   <!-- Bootstrap & core CSS -->
   <link href="../../static/css/bootstrap.min.css" rel="stylesheet">
   <link href="../../static/css/bootstrap.css" rel="stylesheet">
   <link href="../../static/css/audioplayer.css" rel="stylesheet">
-  <link href="../../static/css/artist.css" rel="stylesheet">
+  <link href="../../static/css/demos.css" rel="stylesheet">
   <link href="../../static/css/artist_tracksgrid.css" rel="stylesheet">
     
     
@@ -65,11 +65,12 @@
 		<a href="#" class="btn btn-primary btn-default"><span class="glyphicon glyphicon-cloud-upload"></span> Upload</a>
 
 	 </div>	
+	 <div class="logout">
+       <button type="submit" class="btn"value="submit">Log out</button>
+	 </div>
   </div>
 
-  <div class="logout">
-       <button type="submit" class="btn"value="submit">Log out</button>
-  </div>
+  
    <!-- END randomizer button -->
 {% if demos %}
 {% for demo in demos %}

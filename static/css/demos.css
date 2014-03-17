@@ -1,0 +1,199 @@
+@charset "UTF-8";
+/* CSS Document - for artist/listener side menu and grid placement */
+
+a{
+	color:#FFF;
+	font-size:20px;
+	} 
+
+a:hover {
+	text-decoration:underline;
+	color:#FFF;
+}
+
+.horizontal	{
+	width:20px;
+	height:20px;
+	margin-left:-12px;
+	color:#FFF;
+	margin-top:14px;
+}
+
+ul.horizontal	{
+	margin:0;
+	padding:0;
+}
+
+ul.horizontal li{
+	display:block;
+	float:left;
+	padding:0 10px;
+}
+
+.grid	{
+	text-align:center;
+	width: 600px;
+	margin-top:-340px;
+	margin-left:310px;
+}
+
+.service {
+       width: 33%;
+	   margin-top:5px;
+	   margin-left:auto;
+	   margin-right:auto;
+       float: left;
+       padding: 1px;
+	   width: 170px;
+       height: 150px;
+       overflow: hidden;
+       position: relative;
+       border: 3px solid #000000;
+}
+
+@media screen and (max-width: 400px) {
+       #services .service {
+              width: 20%;
+       }
+}
+
+@media screen and (max-width: 200px) {
+       #services .service {
+              width: 500%;
+       }
+}
+
+#services .service .service-icon, #services .service .service-description {
+       position: absolute;
+       width: 100%;
+       height: 100%;
+       top: 0;
+       left: 0;
+       background: #fff;
+       padding:0;
+       color: #222;
+	   text-align:center;
+}
+
+#services .service .service-description {
+       left: 100%;
+       background: #000000;
+	   opacity:0.85;
+       color: white;
+       padding: 50px;
+}
+
+#services .service .service-description:hover { cursor: pointer; }
+
+[class^="icon-"]:before,
+[class*=" icon-"]:before {
+       font-family: "slidable-grid" !important;
+       font-style: normal !important;
+       font-weight: normal !important;
+       font-variant: normal !important;
+       text-transform: none !important;
+       speak: none;
+       font-size: 3em;
+       line-height: 1;
+       -webkit-font-smoothing: antialiased;
+       -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-web:before {
+       content:url("../../static/01.jpg");
+		resize:both;
+		overflow:auto;
+}
+
+.icon-graphic:before {
+	
+}
+
+.icon-logo:before {
+
+}
+
+.icon-dev:before {
+
+}
+
+.icon-3d:before {
+
+}
+
+.icon-illustration:before {
+
+}
+
+@import url(reset.css);
+
+* { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
+
+.cf:before, .cf:after { content: " "; /* 1 */ display: table; /* 2 */ }
+.cf:after { clear: both; }
+.cf { *zoom: 1; }
+
+body {
+       font-family: 'Exo 2', sans-serif; /* Google Font http://google.com/fonts */
+       text-align: center;
+       color: #999;
+       -webkit-font-smoothing: antialiased;
+}
+
+#services {
+       max-width: 850px;
+       margin: 0 auto;
+}
+
+#services .service .service-icon:hover {
+       cursor: pointer;
+       color: #000000;
+}
+
+#services .service .service-icon span {
+       display: block;
+       -webkit-transition: all 0.1s linear;
+       -moz-transition: all 0.1s linear;
+       transition: all 0.1s linear;
+}
+
+#services .service .service-icon:hover span {
+       position: relative;
+       bottom: 5px;
+}
+
+.button-group
+{
+margin-top: 70px;
+}
+
+.btn 	{
+	margin-top:240px;
+	margin-left: -975px;
+	width:200px;
+	background-color: hsl(0, 69%, 22%) !important; 
+	background-repeat: repeat-x; 
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#b42121", endColorstr="#5e1111"); 
+	background-image: -khtml-gradient(linear, left top, left bottom, from(#b42121), to(#5e1111)); 
+	background-image: -moz-linear-gradient(top, #b42121, #5e1111); 
+	background-image: -ms-linear-gradient(top, #b42121, #5e1111); 
+	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #b42121), color-stop(100%, #5e1111)); 
+	background-image: -webkit-linear-gradient(top, #b42121, #5e1111); background-image: -o-linear-gradient(top, #b42121, #5e1111); 
+	background-image: linear-gradient(#b42121, #5e1111); border-color: #5e1111 #5e1111 hsl(0, 69%, 17%); color: #fff !important; 
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.33); 
+	-webkit-font-smoothing: antialiased; 
+	padding: 6px 40px;
+}
+
+.logout	{
+	margin-top:-225px;
+}
+
+.username {
+   color:#000;
+   font-size: 25px;
+   margin-left: 105px;
+   margin-top: -30px;
+   font-style:oblique ;
+   font-weight: bold;
+}
