@@ -356,3 +356,24 @@ def favourites(request):
 def user_details(request):
 
     return render_to_response('Rate_my_Demo/user_details.html')
+
+@login_required
+def like_demo(request):
+    print "LIIIIKE"
+    context = RequestContext(request)
+    demo_id = None
+    print "LIIIIIKE2"
+    if request.method == 'GET':
+        print "LIIIIIKE3"
+        print request.GET
+        demo_id = request.GET['demo_id']
+        print demo_id
+    likes = 0
+    if demo_id:
+        demo = Demo.objects.get(id=int(demo_id))
+        if demo:
+            likes = demo.up + 1
+            demo.up = likes
+            demo.save()
+
+    return HttpResponse(likes)

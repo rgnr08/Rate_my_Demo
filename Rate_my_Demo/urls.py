@@ -17,6 +17,7 @@ urlpatterns = patterns('',
         url(r'^demos/$', views.demos, name='demos'),
         url(r'^favourites/$', views.favourites, name='favourites'),
         url(r'^user_details/$', views.user_details, name='user-details'),
+        url(r'^like_demo/$', views.like_demo, name='like_demo'),
 
 
         # url(r'^list/$', views.list, name='list'),
