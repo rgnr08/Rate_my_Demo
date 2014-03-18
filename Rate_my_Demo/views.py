@@ -11,35 +11,13 @@ from django.core.urlresolvers import reverse
 
 
 def index(request):
-    # Request the context of the request
-    # The context contains information such as the client's machine details, for example.
 
-    context = RequestContext(request)
-
-    # Construct a dictionary to pass to the template engine as its context
-    # Note the key boldmessage is the same as {{ boldmessage }} in the template!
-
-    # context_dict = {'boldmessage': "I am bold font from the context"}
-
-    # Return a rendered response to send to the client.
-    # We make use of the shortcut function to make our lives easier.
-    # Note that the first parameter is the template we wish to use.
-
-
-    #rate_my_demo_user = RateMyDemoUser.objects.get(user=request.user)
-
-    #favs = Favourites.objects.all()
-    #print "These are favs"
-    #print favs.count()
 
     sorts = Demo.objects.order_by('-up')[:5]
     demos = Demo.objects.order_by('?')
-    # return render_to_response('Rate_my_Demo/favourites.html', {'demos': demos}, context_instance=RequestContext(request))
 
     return render_to_response('Rate_my_Demo/index.html', {'demos': demos, 'sorts': sorts},  context_instance=RequestContext(request))
 
-    #The following code was substituted by what's above
-    #return HttpResponse("Rango says hello world! <a href='/rango/about'>about</a>")
 
 def home(request):
     context = RequestContext(request)
@@ -50,35 +28,25 @@ def home(request):
     return render_to_response('Rate_my_Demo/home.html', {'demos': demos, 'rate_my_demo_user': rate_my_demo_user},  context)
 
 def about(request):
-    #print request.META['USER']
-    #user = request.META['USER']
-    #return HttpResponse("Rango says: here is the about page blood! <a href='/rango/'>Index</a>")
+
+
     return render_to_response('Rate_my_Demo/about_page.html')
 
 
 
 def register(request):
-    # Like before, get the request's context.
+
     context = RequestContext(request)
 
-    # A boolean value for telling the template whether the registration was successful.
-    # Set to False initially. Code changes value to True when registration succeeds.
+
     registered = False
 
-    # If it's a HTTP POST, we're interested in processing form data.
+
     if request.method == 'POST':
-        # Attempt to grab information from the raw form information.
-        # Note that we make use of both UserForm and UserProfileForm.
+
         user_form = UserForm(data=request.POST)
         profile_form = RateMyDemoUserForm(data=request.POST)
 
-        if request.POST['usertype'] == 'Artist':
-            print "Artist"
-
-        if request.POST['username']:
-            print "Found Username"
-
-        # If the two forms are valid...
         if user_form.is_valid() and profile_form.is_valid():
             # Save the user's form data to the database.
             user = user_form.save()
@@ -132,7 +100,6 @@ def upload(request):
     uploaded = False
     if request.method == 'POST':
         form = DemoForm(request.POST, request.FILES)
-        # art = ImageForm(request.POST, request.FILES)
 
 
 
@@ -167,15 +134,13 @@ def upload(request):
 
     else:
         form = DemoForm() # A empty, unbound form
-    # Load documents for the list page
+
     rate_my_demo_user = RateMyDemoUser.objects.get(user=request.user)
     demos = Demo.objects.filter(user=rate_my_demo_user)
 
     print demos
-    # images = Image.objects.all()
 
 
-    # Render list page with the documents and the form
     return render_to_response(
         'Rate_my_Demo/upload_page.html',
         {'demos': demos, 'form': form},
@@ -190,20 +155,17 @@ def user_login(request):
 
     # Like before, obtain the context for the user's request.
     context = RequestContext(request)
-    print "HERE1"
+
     # If the request is a HTTP POST, try to pull out the relevant information.
     if request.method == 'POST':
 
         # Gather the username and password provided by the user.
         # This information is obtained from the login form.
-        print "HERE2"
         username = request.POST['username']
-        print "HERE3"
+
         password = request.POST['password']
 
-        print username
-        print password
-        print "HERE"
+
         # Use Django's machinery to attempt to see if the username/password
         # combination is valid - a User object is returned if it is.
         user = authenticate(username=username, password=password)
@@ -254,7 +216,7 @@ def user_logout(request):
     # Take the user back to the homepage.
     return HttpResponseRedirect('/Rate_my_Demo/')
 
-################################################################################################
+
 @login_required
 def artist(request):
 
@@ -262,19 +224,6 @@ def artist(request):
     if request.method == 'POST':
         form=FavForm(data=request.POST)
 
-        print "METHOD IS POST!"
-        print request.POST
-
-        if request.POST['demo']:
-            print request.POST['demo']
-
-        if request.POST['user']:
-            print request.POST['user']
-
-        # rate_my_demo_user = RateMyDemoUser.objects.get(user=request.user)
-        #
-        # newfav=Favourites()
-        # newfav.user=rate_my_demo_user
 
         rate_my_demo_user = RateMyDemoUser.objects.get(user=request.user)
         favdemo = Demo.objects.get(title=request.POST['demo'])
@@ -292,7 +241,6 @@ def artist(request):
 
 
     else:
-        print "METHOD IS NOT POST!"
 
         rate_my_demo_user = RateMyDemoUser.objects.get(user=request.user)
         form = FavForm(request.POST)
@@ -310,19 +258,6 @@ def listener(request):
     if request.method == 'POST':
         form=FavForm(data=request.POST)
 
-        print "METHOD IS POST!"
-        print request.POST
-
-        if request.POST['demo']:
-            print request.POST['demo']
-
-        if request.POST['user']:
-            print request.POST['user']
-
-        # rate_my_demo_user = RateMyDemoUser.objects.get(user=request.user)
-        #
-        # newfav=Favourites()
-        # newfav.user=rate_my_demo_user
 
         rate_my_demo_user = RateMyDemoUser.objects.get(user=request.user)
         favdemo = Demo.objects.get(title=request.POST['demo'])
@@ -332,7 +267,7 @@ def listener(request):
         newfav.demo=favdemo
         newfav.save()
 
-        demos = Demo.objects.all()
+        demos = Demo.objects.order_by('?')
         sorts = Demo.objects.order_by('-up')[:5]
 
 
@@ -345,7 +280,7 @@ def listener(request):
 
         rate_my_demo_user = RateMyDemoUser.objects.get(user=request.user)
         form = FavForm(request.POST)
-        demos = Demo.objects.all()
+        demos = Demo.objects.order_by('?')
         sorts = Demo.objects.order_by('-up')[:5]
 
 
@@ -382,9 +317,8 @@ def contact(request):
 
 
 def demos(request):
-    print "HOLAAAA"
     if request.method == 'POST':
-        print "HOLAAA2"
+
         demo = request.POST['demo']
         print demo
 
@@ -408,11 +342,11 @@ def demos(request):
 
 
 def favourites(request):
-    print "HOLAAAA"
+    user = request.user
+    RMDuser = RateMyDemoUser.objects.get(user=user)
+
     if request.method == 'POST':
-        print "HOLAAA2"
         fav = request.POST['fav']
-        print fav
 
         todel = Favourites.objects.filter(id=fav)
 
@@ -421,7 +355,13 @@ def favourites(request):
         rate_my_demo_user = RateMyDemoUser.objects.get(user=request.user)
         favs = Favourites.objects.filter(user=rate_my_demo_user)
 
-        return render_to_response('Rate_my_Demo/favourites.html', {'favs': favs, 'rate_my_demo_user': rate_my_demo_user}, context_instance=RequestContext(request))
+        if RMDuser.usertype == 'Artist':
+
+            return render_to_response('Rate_my_Demo/favourites.html', {'favs': favs, 'rate_my_demo_user': rate_my_demo_user}, context_instance=RequestContext(request))
+
+        else:
+
+            return render_to_response('Rate_my_Demo/listener_favourites.html', {'favs': favs, 'rate_my_demo_user': rate_my_demo_user}, context_instance=RequestContext(request))
 
     else:
         rate_my_demo_user = RateMyDemoUser.objects.get(user=request.user)
@@ -429,12 +369,11 @@ def favourites(request):
 
         return render_to_response('Rate_my_Demo/favourites.html', {'favs': favs, 'rate_my_demo_user': rate_my_demo_user}, context_instance=RequestContext(request))
 
+
 def listener_favourites(request):
-    print "HOLAAAA"
+
     if request.method == 'POST':
-        print "HOLAAA2"
         fav = request.POST['fav']
-        print fav
 
         todel = Favourites.objects.filter(id=fav)
 
@@ -458,15 +397,16 @@ def user_details(request):
 
 @login_required
 def like_demo(request):
-    print "LIIIIKE"
+
     context = RequestContext(request)
     demo_id = None
-    print "LIIIIIKE2"
+
     if request.method == 'GET':
-        print "LIIIIIKE3"
+
         print request.GET
         demo_id = request.GET['demo_id']
         print demo_id
+
     likes = 0
     if demo_id:
         demo = Demo.objects.get(id=int(demo_id))
@@ -479,16 +419,12 @@ def like_demo(request):
 
 @login_required
 def unlike_demo(request):
-    print "A"
     context = RequestContext(request)
     demo_id2 = None
-    print "B"
 
     if request.method == 'GET':
-        print "C"
-        print request.GET
+
         demo_id2 = request.GET['demo_id2']
-        print demo_id2
 
     unlikes = 0
     if demo_id2:
