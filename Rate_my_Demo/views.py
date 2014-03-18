@@ -33,11 +33,11 @@ def index(request):
     #print favs.count()
 
     demos = Demo.objects.all()
-
+    sorts = Demo.objects.order_by('-up')[:5]
 
     # return render_to_response('Rate_my_Demo/favourites.html', {'demos': demos}, context_instance=RequestContext(request))
 
-    return render_to_response('Rate_my_Demo/index.html', {'demos': demos},  context_instance=RequestContext(request))
+    return render_to_response('Rate_my_Demo/index.html', {'demos': demos, 'sorts': sorts},  context_instance=RequestContext(request))
 
     #The following code was substituted by what's above
     #return HttpResponse("Rango says hello world! <a href='/rango/about'>about</a>")

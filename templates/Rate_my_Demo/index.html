@@ -56,7 +56,12 @@
 
   <!-- sidemenu buttons-->
 	<div class="button-group">
-
+    <div class="controls"></div>
+            {% for sort in sorts %}
+            {{ sort.title }}
+            {{ sort.up }}
+            {% endfor %}
+    </div>
         {% if user.is_authenticated %}
         <div class="controls">
 
@@ -75,6 +80,7 @@
 		<div class="controls">
 			<a href = "/Rate_my_Demo/register_page/"><button type="submit" class="btn"value="submit">Register</button></a>
 		</div>
+
         {% endif %}
 	</div>
 
