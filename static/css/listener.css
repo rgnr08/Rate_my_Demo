@@ -1,22 +1,66 @@
 @charset "UTF-8";
 /* CSS Document - for artist/listener side menu and grid placement */
 
+body {
+	background-color:#666;
+}
 
+.top {
+	background-color:#FFFFFF;
+	width:auto;
+	height:110px;
+}
+
+.logo {
+	position:relative;
+	text-align:center;
+	margin-left:-5px;
+	margin-right:auto;
+	margin-top:auto;
+	display:block;
+	width:100%;
+	height:100%;
+}
+
+.navbar-header {
+	float:left;
+	padding:15px;
+	text-align:center;
+	width: 100%;
+	color:#F00;
+}
+
+.navbar-brand {
+	float:none;
+	color:#C41212;
+}
+
+.border	{
+	width:auto;
+	height:4px;
+	border-style:solid;
+	border-color:#B01212;
+}
 
 a{
 	color:#FFF;
 	font-size:20px;
-	} 
+	}
 
 a:hover {
 	text-decoration:underline;
 	color:#FFF;
 }
 
+a:active    {
+    text-decoration: underline;
+    color: #FFF;
+}
+
 .horizontal	{
 	width:20px;
 	height:20px;
-	margin-left:-12px;
+	margin-left:-80px;
 	color:#FFF;
 	margin-top:14px;
 }
@@ -34,23 +78,23 @@ ul.horizontal li{
 
 .grid	{
 	text-align:center;
-	width: 600px;
-	margin-top:-175px;
-	margin-left:309px;
+	width: 700px;
+	margin-top:-275px;
+	margin-left:auto;
+    margin-right: auto;
 }
 
 .service {
-       width: 33%;
+       text-align: center;
 	   margin-top:5px;
 	   margin-left:auto;
 	   margin-right:auto;
        float: left;
-       padding: 1px;
-	   width: 170px;
-       height: 150px;
+	   width: 230px;
+       height: 210px;
        overflow: hidden;
        position: relative;
-       border: 3px solid #000000;
+       border: 4px solid #666;
 }
 
 @media screen and (max-width: 400px) {
@@ -71,10 +115,9 @@ ul.horizontal li{
        height: 100%;
        top: 0;
        left: 0;
-       background: #fff;
-       padding:;
+       background: #000;
        color: #222;
-	   text-align:center;
+       padding: 0px;
 }
 
 #services .service .service-description {
@@ -114,12 +157,12 @@ ul.horizontal li{
 
 .icon-web:before {
        content:url("../../static/01.jpg");
-		resize:both;
-		overflow:auto;
+	   resize:both;
+	   overflow:auto;
 }
 
 .icon-graphic:before {
-	
+
 }
 
 .icon-logo:before {
@@ -176,23 +219,33 @@ body {
 }
 
 .btn 	{
-	margin-top:120px;
-	margin-left: -975px;
+	margin-top:450px;
+	margin-left: -1100px;
 	width:200px;
-	background-color: hsl(0, 69%, 22%) !important; 
-	background-repeat: repeat-x; 
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#b42121", endColorstr="#5e1111"); 
-	background-image: -khtml-gradient(linear, left top, left bottom, from(#b42121), to(#5e1111)); 
-	background-image: -moz-linear-gradient(top, #b42121, #5e1111); 
-	background-image: -ms-linear-gradient(top, #b42121, #5e1111); 
-	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #b42121), color-stop(100%, #5e1111)); 
-	background-image: -webkit-linear-gradient(top, #b42121, #5e1111); background-image: -o-linear-gradient(top, #b42121, #5e1111); 
-	background-image: linear-gradient(#b42121, #5e1111); border-color: #5e1111 #5e1111 hsl(0, 69%, 17%); color: #fff !important; 
-	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.33); 
-	-webkit-font-smoothing: antialiased; 
+	background-color: hsl(0, 69%, 22%) !important;
+	background-repeat: repeat-x;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#b42121", endColorstr="#5e1111");
+	background-image: -khtml-gradient(linear, left top, left bottom, from(#b42121), to(#5e1111));
+	background-image: -moz-linear-gradient(top, #b42121, #5e1111);
+	background-image: -ms-linear-gradient(top, #b42121, #5e1111);
+	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #b42121), color-stop(100%, #5e1111));
+	background-image: -webkit-linear-gradient(top, #b42121, #5e1111); background-image: -o-linear-gradient(top, #b42121, #5e1111);
+	background-image: linear-gradient(#b42121, #5e1111); border-color: #5e1111 #5e1111 hsl(0, 69%, 17%); color: #fff !important;
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.33);
+	-webkit-font-smoothing: antialiased;
 	padding: 6px 40px;
 }
 
 .logout	{
-	margin-top:-100px;
+	margin-top:-225px;
 }
+
+.username {
+   color:#000;
+   font-size: 25px;
+   margin-left: 105px;
+   margin-top: -30px;
+   font-style:oblique ;
+   font-weight: bold;
+}
+

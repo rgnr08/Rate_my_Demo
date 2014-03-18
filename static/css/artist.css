@@ -248,4 +248,24 @@ body {
    font-style:oblique ;
    font-weight: bold;
 }
+ul
+{
+    list-style-type: none;
+    text-align: left;
+}
 
+.top_5  {
+    font-size: 35px;
+    color:#ffffff;
+    text-decoration: underline;
+}
+
+li  {
+   color:#ffffff;
+   font-size: 20px;
+}
+
+.chart  {
+    margin-left: 1450px;
+    margin-top: -420px;
+}

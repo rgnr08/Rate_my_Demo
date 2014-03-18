@@ -68,3 +68,25 @@ a{
 a:hover {
     color:#B01212 ;
 }
+
+ul
+{
+    list-style-type: none;
+    text-align: left;
+}
+
+.top_5  {
+    font-size: 35px;
+    color:#ffffff;
+    text-decoration: underline;
+}
+
+li  {
+   color:#ffffff;
+   font-size: 20px;
+}
+
+.chart  {
+    margin-left: 1375px;
+    margin-top: -440px;
+}

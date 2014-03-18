@@ -86,7 +86,8 @@ input[type=text]:focus, [type="password"]:focus {
 /* register button */
 .btn
 {
-margin-left: 83px;
+margin-top: 50px;
+margin-left: 50px;
 background-color: hsl(0, 69%, 22%) !important; 
 background-repeat: repeat-x; 
 filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#b42121", endColorstr="#5e1111"); 

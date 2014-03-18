@@ -42,25 +42,25 @@
     color:#B01212 ;
 }
 
-.glyphicon-arrow-up {
+.glyphicon-circle-arrow-up {
     font-size: 30px;
     border:none !important;
 	outline:none;
 	background:transparent;
 }
 
-.glyphicon-arrow-up:hover  {
+.glyphicon-circle-arrow-up:hover  {
     color:#B01212 ;
 }
 
-.glyphicon-arrow-down {
+.glyphicon-circle-arrow-down {
     font-size: 30px;
     border:none !important;
 	outline:none;
 	background:transparent;
 }
 
-.glyphicon-arrow-down:hover  {
+.glyphicon-circle-arrow-down:hover  {
     color:#B01212 ;
 }
 
@@ -115,12 +115,19 @@
 }
 
 .ratings    {
+    font-size: 17px;
     font-weight: bold;
     margin-left: 39px;
     margin-top: 26px;
 }
 
-.button {
+.likes  {
+    border:none !important;
+	outline:none;
+	background:transparent;
+}
+
+.unlikes    {
     border:none !important;
 	outline:none;
 	background:transparent;

@@ -6,15 +6,14 @@
   <meta name="description" content="">
   <meta name="author" content="">
    <link rel="shortcut icon" href="../../static/favicon.ico">
-  <title>Your Demos</title>
+  <title>Your Favourites</title>
 
   <!-- Bootstrap & core CSS -->
   <link href="../../static/css/bootstrap.min.css" rel="stylesheet">
   <link href="../../static/css/bootstrap.css" rel="stylesheet">
   <link href="../../static/css/audioplayer.css" rel="stylesheet">
   <link href="../../static/css/favourites.css" rel="stylesheet">
-  <link href="../../static/css/artist_tracksgrid.css" rel="stylesheet">
-
+  <link href="../../static/css/listener_tracksgrid.css" rel="stylesheet">
 
   <!-- Audio Player JS -->
 
@@ -55,10 +54,7 @@
     <li></li>
     <li><img border="0" src="{{ rate_my_demo_user.thumbnail.url }}" alt="image" width="100" height="100"></li>
     <li><div class="username">{{ rate_my_demo_user }}</div></li>
-
-    </br>
     <li><a href="/Rate_my_Demo/artist/">Home</a></li>
-    <li><a href="/Rate_my_Demo/favourites/">Favourites</a></li>
     <li><a href="/Rate_my_Demo/demos/">Demos</a></li>
     <li><a href="/Rate_my_Demo/user_details/">Details</a></li>
     </ul>
@@ -104,12 +100,6 @@
            </form>
 
 
-
-
-
-
-
-
         </div>
   </div>
   </p>
@@ -117,10 +107,6 @@
 {% endfor %}
 {% endif %}
   </div>
-
-
-
-
 
   </div>
 

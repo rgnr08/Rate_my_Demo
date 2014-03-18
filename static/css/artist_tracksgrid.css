@@ -55,9 +55,9 @@ a:hover {
 .horizontal	{
 	width:20px;
 	height:20px;
-	margin-left:-12px;
+	margin-left:-80px;
 	color:#FFF;
-	margin-top:81px;
+	margin-top:94px;
 }
 
 ul.horizontal	{
@@ -72,9 +72,9 @@ ul.horizontal li{
 }
 
 .btn 	{
-	margin-top:141px;
-    margin-bottom: -18px;
-	margin-left: -975px;
+	margin-top:165px;
+    margin-bottom: -50px;
+	margin-left: -1100px;
 	width:200px;
 	background-color: hsl(0, 69%, 22%) !important; 
 	background-repeat: repeat-x; 
@@ -95,14 +95,15 @@ ul.horizontal li{
 }
 
 .demogrid	{
-	margin-left:320px;
-	margin-top:-316px;
-    margin-bottom:350px ;
+	margin-left:280px;
+	margin-top:-300px;
+    margin-bottom:305px ;
 	color:#000;
 	height:90px;
-	width:500px;
+	width:600px;
 	background-color:#C0C0C0;
 	text-align:left;
+    padding-bottom: 5px;
 }
 
 .thumbnail-slot	{
@@ -119,7 +120,7 @@ ul.horizontal li{
 
 .delete	{
 	margin-top:-40px;
-	margin-left:210px;
+	margin-left:260px;
 	font-size:40px;
 	color:#B01212;
 	border:none !important;
