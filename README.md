@@ -16,8 +16,8 @@ Each demo can be rated up and down by users and these ratings will be visible to
 Users will also be able to select favourite tracks which will allow them to listen to them at any time via a favourite page that is accessed from their profile page. Users can also remove favourites at any time via the favourite page.
 
 
-INSTALLATION
 
+INSTALLATION
 ===================================================================
 
 If Rate my demo is clone directly from github it will contain the Rate_my_Demo.db file which will allow the site to be run immediately using the command python manage.py runserver. When this command has been run the default address to view the site locally is http://127.0.0.1:8000/Rate_my_Demo. 
