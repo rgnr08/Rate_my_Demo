@@ -14,7 +14,7 @@ def index(request):
     # Request the context of the request
     # The context contains information such as the client's machine details, for example.
 
-    # context = RequestContext(request)
+    context = RequestContext(request)
 
     # Construct a dictionary to pass to the template engine as its context
     # Note the key boldmessage is the same as {{ boldmessage }} in the template!
@@ -27,13 +27,12 @@ def index(request):
 
 
     #rate_my_demo_user = RateMyDemoUser.objects.get(user=request.user)
+
+    #favs = Favourites.objects.all()
+    #print "These are favs"
+    #print favs.count()
+
     demos = Demo.objects.all()
-    print demos
-    favs = Favourites.objects.all()
-    print "These are favs"
-    print favs.count()
-
-
 
 
     # return render_to_response('Rate_my_Demo/favourites.html', {'demos': demos}, context_instance=RequestContext(request))
@@ -157,10 +156,12 @@ def upload(request):
 
             if rate_my_demo_user.usertype == 'Artist':
                 print 'user is an artist'
-                return render_to_response('Rate_my_Demo/artist.html', {'uploaded': uploaded})
+                demos = Demo.objects.all()
+                return HttpResponseRedirect('/Rate_my_Demo/artist/', {'uploaded': uploaded, 'demos': demos})
             else:
                 print 'user is listener!!'
-                return render_to_response('Rate_my_Demo/listener.html', {'uploaded': uploaded})
+                demos = Demo.objects.all()
+                return render_to_response('/Rate_my_Demo/listener/', {'uploaded': uploaded, 'demos': demos})
 
 
 
@@ -302,13 +303,50 @@ def artist(request):
 
 @login_required
 def listener(request):
+    context = RequestContext(request)
+    if request.method == 'POST':
+        form=FavForm(data=request.POST)
 
-    return HttpResponseRedirect('/Rate_my_Demo/listener.html/')
+        print "METHOD IS POST!"
+        print request.POST
+
+        if request.POST['demo']:
+            print request.POST['demo']
+
+        if request.POST['user']:
+            print request.POST['user']
+
+        # rate_my_demo_user = RateMyDemoUser.objects.get(user=request.user)
+        #
+        # newfav=Favourites()
+        # newfav.user=rate_my_demo_user
+
+        rate_my_demo_user = RateMyDemoUser.objects.get(user=request.user)
+        favdemo = Demo.objects.get(title=request.POST['demo'])
+
+        newfav=Favourites()
+        newfav.user=rate_my_demo_user
+        newfav.demo=favdemo
+        newfav.save()
+
+        demos = Demo.objects.all()
+
+        return HttpResponseRedirect('/Rate_my_Demo/listener/',{'demos': demos, 'form': form},context)
+
+
+
+    else:
+        print "METHOD IS NOT POST!"
+
+        rate_my_demo_user = RateMyDemoUser.objects.get(user=request.user)
+        form = FavForm(request.POST)
+        demos = Demo.objects.all()
+        return render_to_response('Rate_my_Demo/listener.html', {'demos': demos, 'form': form, 'rate_my_demo_user': rate_my_demo_user}, context)
+
 
 @login_required
 def check_usertype(request):
 
-    print "user got here"
     user = request.user
     print user.username
 
@@ -382,6 +420,28 @@ def favourites(request):
         favs = Favourites.objects.filter(user=rate_my_demo_user)
 
         return render_to_response('Rate_my_Demo/favourites.html', {'favs': favs, 'rate_my_demo_user': rate_my_demo_user}, context_instance=RequestContext(request))
+
+def listener_favourites(request):
+    print "HOLAAAA"
+    if request.method == 'POST':
+        print "HOLAAA2"
+        fav = request.POST['fav']
+        print fav
+
+        todel = Favourites.objects.filter(id=fav)
+
+        todel.delete()
+
+        rate_my_demo_user = RateMyDemoUser.objects.get(user=request.user)
+        favs = Favourites.objects.filter(user=rate_my_demo_user)
+
+        return render_to_response('Rate_my_Demo/listener_favourites.html', {'favs': favs, 'rate_my_demo_user': rate_my_demo_user}, context_instance=RequestContext(request))
+
+    else:
+        rate_my_demo_user = RateMyDemoUser.objects.get(user=request.user)
+        favs = Favourites.objects.filter(user=rate_my_demo_user)
+
+        return render_to_response('Rate_my_Demo/listener_favourites.html', {'favs': favs, 'rate_my_demo_user': rate_my_demo_user}, context_instance=RequestContext(request))
 
 
 def user_details(request):

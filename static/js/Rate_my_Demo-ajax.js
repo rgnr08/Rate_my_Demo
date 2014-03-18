@@ -14,7 +14,7 @@ $(".likes").click(function() {
 $(".unlikes").click(function() {
 
      var demoid2 = $(this).attr("data-demoid2");
-    console.log("demoid2" + demoid2 )
+    console.log("demoid2" + demoid2 );
      $.get('/Rate_my_Demo/unlike_demo/', {demo_id2: demoid2}, function(data){
               $("#unlike_count" + demoid2).html(data);
               $(this).hide();
