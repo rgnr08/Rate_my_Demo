@@ -78,7 +78,7 @@
   <div id="services" class="cf">
 
        {% for demo in demos %}
-
+            {% if forloop.counter <= 6 %}
        <section class="service">
               <div class="service-icon"><span class="icon-graphic"></span><br/><img border="0" src="{{ demo.img.url }}" alt="{{ demo.name }}" width="160" height="160"></div>
               <div class="service-description">
@@ -112,14 +112,28 @@
               </div>
        </section>
 
+
+           {% endif %}
        {% endfor %}
 
 
   </div>
   </div> <!-- END #services -->
 
-  </div>
-  
+ <div class="chart">
+        <ul>
+             <div class="top_5"> TOP 5 </div>
+            {% for sort in sorts %}
+            <li>
+            <img border="10" src="{{ sort.img.url }}" alt="{{ demo.name }}" width="40" height="40">
+            {{ sort.title }}
+            {{ sort.up }}
+            </li>
+            {% endfor %}
+        </ul>
+      </div>
+
+
   <!-- bottom navigation bar -->
   <div class="navbar navbar-inverse navbar-fixed-bottom" role="navigation">
     <div class="container">

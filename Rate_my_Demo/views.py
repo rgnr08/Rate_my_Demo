@@ -32,9 +32,8 @@ def index(request):
     #print "These are favs"
     #print favs.count()
 
-    demos = Demo.objects.all()
     sorts = Demo.objects.order_by('-up')[:5]
-
+    demos = Demo.objects.order_by('?')
     # return render_to_response('Rate_my_Demo/favourites.html', {'demos': demos}, context_instance=RequestContext(request))
 
     return render_to_response('Rate_my_Demo/index.html', {'demos': demos, 'sorts': sorts},  context_instance=RequestContext(request))
@@ -286,8 +285,9 @@ def artist(request):
         newfav.save()
 
         demos = Demo.objects.all()
+        sorts = Demo.objects.order_by('-up')[:5]
 
-        return HttpResponseRedirect('/Rate_my_Demo/artist/',{'demos': demos, 'form': form},context)
+        return HttpResponseRedirect('/Rate_my_Demo/artist/',{'demos': demos, 'form': form, 'sorts':sorts},context)
 
 
 
@@ -296,8 +296,11 @@ def artist(request):
 
         rate_my_demo_user = RateMyDemoUser.objects.get(user=request.user)
         form = FavForm(request.POST)
-        demos = Demo.objects.all()
-        return render_to_response('Rate_my_Demo/artist.html', {'demos': demos, 'form': form, 'rate_my_demo_user': rate_my_demo_user}, context)
+        demos = Demo.objects.order_by('?')
+        sorts = Demo.objects.order_by('-up')[:5]
+
+
+        return render_to_response('Rate_my_Demo/artist.html', {'demos': demos, 'form': form, 'rate_my_demo_user': rate_my_demo_user, 'sorts':sorts}, context)
 
 #################################################################################################
 
@@ -330,8 +333,10 @@ def listener(request):
         newfav.save()
 
         demos = Demo.objects.all()
+        sorts = Demo.objects.order_by('-up')[:5]
 
-        return HttpResponseRedirect('/Rate_my_Demo/listener/',{'demos': demos, 'form': form},context)
+
+        return HttpResponseRedirect('/Rate_my_Demo/listener/',{'demos': demos, 'form': form, 'sorts':sorts},context)
 
 
 
@@ -341,7 +346,10 @@ def listener(request):
         rate_my_demo_user = RateMyDemoUser.objects.get(user=request.user)
         form = FavForm(request.POST)
         demos = Demo.objects.all()
-        return render_to_response('Rate_my_Demo/listener.html', {'demos': demos, 'form': form, 'rate_my_demo_user': rate_my_demo_user}, context)
+        sorts = Demo.objects.order_by('-up')[:5]
+
+
+        return render_to_response('Rate_my_Demo/listener.html', {'demos': demos, 'form': form, 'rate_my_demo_user': rate_my_demo_user, 'sorts':sorts}, context)
 
 
 @login_required
