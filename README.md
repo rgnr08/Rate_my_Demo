@@ -3,6 +3,8 @@ Rate_my_Demo
 
 Sofa King Good ITECH Project
 
+
+Description and main features
 ===================================================================
 
 Rate my Demo is a website that has been designed to deliver a unique music sharing platform where artists can submit demos to be listened to and rated by other users.
@@ -20,4 +22,4 @@ Users will also be able to select favourite tracks which will allow them to list
 INSTALLATION
 ===================================================================
 
-If Rate my demo is clone directly from github it will contain the Rate_my_Demo.db file which will allow the site to be run immediately using the command python manage.py runserver. When this command has been run the default address to view the site locally is http://127.0.0.1:8000/Rate_my_Demo. 
+If Rate my demo is clone directly from Github it will contain the Rate_my_Demo.db file which will allow the site to be run immediately using the command python manage.py runserver. When this command has been run the default address to view the site locally is http://127.0.0.1:8000/Rate_my_Demo.
