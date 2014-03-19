@@ -91,13 +91,13 @@ ul.horizontal li{
 }
 
 .logout	{
-	margin-top:-90px;
+	margin-top:90px;
 }
 
 .demogrid	{
 	margin-left:280px;
-	margin-top:-320px;
-    margin-bottom:305px ;
+	margin-top:-250px;
+    margin-bottom:260px ;
 	color:#000;
 	height:90px;
 	width:600px;
@@ -146,6 +146,17 @@ ul.horizontal li{
 	opacity:0.8;
 }
 
+.pause	{
+	font-size:20px;
+	color:#FFF;
+	border:none !important;
+	outline:none;
+	background:transparent;
+	margin-top:-350px;
+	margin-left:35px;
+	opacity:0.8;
+}
+
 .glyphicon-play	{
 	font-size:36px;
 	margin-left:-5px;
@@ -154,4 +165,38 @@ ul.horizontal li{
 .gridplay   {
     margin-top: -50px;
 }
+
+.glyphicon.glyphicon-arrow-up   {
+  margin-right: 8px;
+  margin-left: 8px;
+}
+
+.glyphicon.glyphicon-arrow-down   {
+  margin-right: 12px;
+  margin-left: 12px;
+}
+
+.glyphicon-play	{
+	font-size:36px;
+	margin-left:-20px;
+}
+
+.glyphicon-pause	{
+	font-size:25px;
+	margin-left:5px;
+    margin-top: -5px;
+}
+
+.gridplay   {
+    margin-top: -50px;
+}
+
+.glyphicon-play:hover   {
+    color:#B01212 ;
+}
+
+.glyphicon-pause:hover   {
+    color:#B01212 ;
+}
+
 

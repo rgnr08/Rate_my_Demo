@@ -22,10 +22,4 @@ urlpatterns = patterns('',
         url(r'^like_demo/$', views.like_demo, name='like_demo'),
         url(r'^unlike_demo/$', views.unlike_demo, name='unlike_demo'),
 
-        # url(r'^list/$', views.list, name='list'),
-
-
-
-
-        #url(r'^favicon\.ico$', 'django.views.generic.simple.redirect_to', {'url': '/static/favicon.ico'}),
         )

@@ -97,6 +97,7 @@ def register(request):
 
 def upload(request):
     # Handle file upload
+
     uploaded = False
     if request.method == 'POST':
         form = DemoForm(request.POST, request.FILES)
@@ -250,7 +251,7 @@ def artist(request):
 
         return render_to_response('Rate_my_Demo/artist.html', {'demos': demos, 'form': form, 'rate_my_demo_user': rate_my_demo_user, 'sorts':sorts}, context)
 
-#################################################################################################
+
 
 @login_required
 def listener(request):
@@ -263,15 +264,15 @@ def listener(request):
         favdemo = Demo.objects.get(title=request.POST['demo'])
 
         newfav=Favourites()
-        newfav.user=rate_my_demo_user
-        newfav.demo=favdemo
+        newfav.user = rate_my_demo_user
+        newfav.demo= favdemo
         newfav.save()
 
         demos = Demo.objects.order_by('?')
         sorts = Demo.objects.order_by('-up')[:5]
 
 
-        return HttpResponseRedirect('/Rate_my_Demo/listener/',{'demos': demos, 'form': form, 'sorts':sorts},context)
+        return HttpResponseRedirect('/Rate_my_Demo/listener/', {'demos': demos, 'form': form, 'sorts': sorts}, context)
 
 
 
@@ -280,10 +281,12 @@ def listener(request):
 
         rate_my_demo_user = RateMyDemoUser.objects.get(user=request.user)
         form = FavForm(request.POST)
+
         demos = Demo.objects.order_by('?')
+
         sorts = Demo.objects.order_by('-up')[:5]
 
-
+        demos = Demo.objects.order_by('?')
         return render_to_response('Rate_my_Demo/listener.html', {'demos': demos, 'form': form, 'rate_my_demo_user': rate_my_demo_user, 'sorts':sorts}, context)
 
 

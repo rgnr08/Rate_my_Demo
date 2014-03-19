@@ -83,11 +83,19 @@
 
     	<div class="thumbnail-slot"><img border="0" src="{{ demo.img.url }}" alt="{{ demo.name }}" width="90" height="90">
         <div class="gridplay">
+
         <button type="button" class="play">
-        <a onclick="this.firstChild.play()"><audio src="{{ demo.docfile.url }}"></audio>
+        <audio id="{{ demo.id }}" src="{{ demo.docfile.url }}"></audio>
+        <a href="javascript:;" onclick="document.getElementById('{{ demo.id }}').play();">
         <span class="glyphicon glyphicon-play"></span>
-        </button>
         </a>
+        </button>
+        <button type="button" class="pause">
+        <a href="javascript:;" onclick="document.getElementById('{{ demo.id }}').pause();">
+        <span class="glyphicon glyphicon-pause"></span>
+        </a>
+        </button>
+
         </div>
         </div>
 
@@ -109,20 +117,15 @@
 {% endif %}
   </div>
 
-
-
-
-
   </div>
   
   <!-- bottom navigation bar -->
   <div class="navbar navbar-inverse navbar-fixed-bottom" role="navigation">
     <div class="container">
       <div class="navbar-header">
-       <a class="navbar-brand" href="about_page.html">About</a> <a class="navbar-brand" href="bootstrap-3.1.1-dist/contact.html">Contact</a>
+       <a class="navbar-brand" href="/Rate_my_Demo/about_page/">About</a> <a class="navbar-brand" href="/Rate_my_Demo/contact/">Contact</a> </div>
 	  </div>
     </div>
-  </div>
   
   <!-- Bootstrap core JavaScript
       ================================================== --> 
