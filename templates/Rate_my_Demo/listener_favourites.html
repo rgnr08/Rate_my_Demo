@@ -13,7 +13,7 @@
   <link href="../../static/css/bootstrap.css" rel="stylesheet">
   <link href="../../static/css/audioplayer.css" rel="stylesheet">
   <link href="../../static/css/favourites.css" rel="stylesheet">
-  <link href="../../static/css/artist_tracksgrid.css" rel="stylesheet">
+  <link href="../../static/css/listener_tracksgrid.css" rel="stylesheet">
 
 
   <!-- Audio Player JS -->
@@ -62,14 +62,6 @@
     </ul>
    </div>
 
-  <!-- randomizer button -->
-  <div class="button-group">
-	 <div class="controls">
-		<a href="/Rate_my_Demo/upload_page/" class="btn btn-primary btn-default"><span class="glyphicon glyphicon-cloud-upload"></span> Upload</a>
-
-	 </div>
-  </div>
-
   <div class="logout">
        <a href="/Rate_my_Demo/logout/" ><button type="submit" class="btn"value="submit">Log out</button></a>
   </div>
@@ -94,7 +86,7 @@
         <div class="votes"><span class="glyphicon glyphicon-arrow-up"></span> {{ fav.demo.up }}<span class="glyphicon glyphicon-arrow-down"> {{ fav.demo.down }}</span></div>
 
         <div class="delete">
-            <form action="/Rate_my_Demo/favourites/" method="post" enctype="multipart/form-data">
+            <form action="/Rate_my_Demo/listener_favourites/" method="post" enctype="multipart/form-data">
                  {% csrf_token %}
             <button type="submit" value="{{ fav.id }}" name="fav" class="delete">
             <span class=" glyphicon glyphicon-remove-circle"></span>
@@ -118,7 +110,7 @@
   <div class="navbar navbar-inverse navbar-fixed-bottom" role="navigation">
     <div class="container">
       <div class="navbar-header">
-       <a class="navbar-brand" href="about_page.html">About</a> <a class="navbar-brand" href="bootstrap-3.1.1-dist/contact.html">Contact</a>
+         <a class="navbar-brand" href="/Rate_my_Demo/about_page/">About</a> <a class="navbar-brand" href="/Rate_my_Demo/contact/">Contact</a> </div>
 	  </div>
     </div>
   </div>

@@ -79,12 +79,12 @@
 
        {% for demo in demos %}
             {% if forloop.counter <= 6 %}
-       <section class="service">
+            <section class="service">
               <div class="service-icon"><span class="icon-graphic"></span><br/><img border="0" src="{{ demo.img.url }}" alt="{{ demo.name }}" width="160" height="160"></div>
               <div class="service-description">
                 <div class="player_buttons">
 
-                    <form action="/Rate_my_Demo/artist/" method="post" enctype="multipart/form-data">
+                    <form action="/Rate_my_Demo/listener/" method="post" enctype="multipart/form-data">
                     <audio id="{{ demo.id }}" src="{{ demo.docfile.url }}"></audio>
                     <a href="javascript:;" onclick="document.getElementById('{{ demo.id }}').play();">
                     <span class="glyphicon glyphicon-play"></span>
@@ -103,8 +103,9 @@
                      <div class="ratings">
                      {% if user.is_authenticated %}
                      <b id="like_count{{demo.id}}">{{ demo.up }}</b>
-                     <button class ="likes" data-demoid="{{demo.id}}"  type="button"><span class="glyphicon glyphicon-arrow-up"></span></button>
-                     <button class ="unlikes" data-demoid2="{{demo.id}}"  type="button"><span class="glyphicon glyphicon-arrow-down"></span></button>
+
+                     <button class ="likes" data-demoid="{{demo.id}}"  type="button"><span class="glyphicon glyphicon-circle-arrow-up"></span></button>
+                     <button class ="unlikes" data-demoid2="{{demo.id}}"  type="button"><span class="glyphicon glyphicon-circle-arrow-down"></span></button>
                      <b id="unlike_count{{demo.id}}">{{ demo.down }}</b>
                      {% endif %}
                         </div>
@@ -123,11 +124,12 @@
  <div class="chart">
         <ul>
              <div class="top_5"> TOP 5 </div>
+        </br>
             {% for sort in sorts %}
             <li>
             <img border="10" src="{{ sort.img.url }}" alt="{{ demo.name }}" width="40" height="40">
             {{ sort.title }}
-            {{ sort.up }}
+            ({{ sort.up }})
             </li>
             {% endfor %}
         </ul>

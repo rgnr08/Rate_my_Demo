@@ -332,7 +332,7 @@ def listener(request):
         newfav.demo=favdemo
         newfav.save()
 
-        demos = Demo.objects.all()
+        demos = Demo.objects.order_by('?')
         sorts = Demo.objects.order_by('-up')[:5]
 
 
@@ -345,10 +345,9 @@ def listener(request):
 
         rate_my_demo_user = RateMyDemoUser.objects.get(user=request.user)
         form = FavForm(request.POST)
-        demos = Demo.objects.all()
         sorts = Demo.objects.order_by('-up')[:5]
 
-
+        demos = Demo.objects.order_by('?')
         return render_to_response('Rate_my_Demo/listener.html', {'demos': demos, 'form': form, 'rate_my_demo_user': rate_my_demo_user, 'sorts':sorts}, context)
 
 
