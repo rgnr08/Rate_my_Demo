@@ -23,15 +23,21 @@ ISSUES AND INCOMPLETE FEATURES
 
 There are a number of issues remaining in the app that we would like to fix. There are also some features that were not implemented.
 
+
 Issues:
 1. The design is not responsive to changes in window sizes or use on small screens unless the zoom level is reduced. 
+
 2. Adding a demo to favourites triggers a refresh the current selection of Demos.
+
 3. It is possible for users to create another profile by going to the about page and clicking on the register button.
+
 4. At the moment clicking play on another demo while one is already playing results in both songs playing at once. We would hope to implement a fix so that only one song would play at a time. 
 
 Unimplemented features:
 1. A feature to allow limited search based on genre was not implemented, but genre preference is stored in the users profile.
+
 2. The ability to change profile details via the change details page was not implemented. Althogh the change details page is present it does not work and clcking any of the buttons returns users to the home page.
+
 3. At the moment the user is unable to visually identify whic song is currently playing. We would hope to add some form of visual indicator to solve this issue.
 
 
