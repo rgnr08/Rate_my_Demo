@@ -40,7 +40,7 @@ Unimplemented features:
 
 2. The ability to change profile details via the change details page was not implemented. Althogh the change details page is present it does not work and clcking any of the buttons returns users to the home page.
 
-3. At the moment the user is unable to visually identify whic song is currently playing. We would hope to add some form of visual indicator to solve this issue.
+3. At the moment the user is unable to visually identify which song is currently playing. We would hope to add some form of visual indicator to solve this issue.
 
 
 INSTALLATION
