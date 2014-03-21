@@ -48,6 +48,8 @@ INSTALLATION
 
 If Rate my Demo is cloned directly from Github it will contain the Rate_my_Demo.db file which will allow the site to be run immediately using the command python manage.py runserver. When this command has been run the default address to view the site locally is http://127.0.0.1:8000/Rate_my_Demo.
 
+Below are the usernames and passwords for this version of Rate my Demo.
+
 User        Pasword       Type
   
 123         123         Admin
