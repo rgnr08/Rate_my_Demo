@@ -25,6 +25,7 @@ There are a number of issues remaining in the app that we would like to fix. The
 
 
 Issues:
+
 1. The design is not responsive to changes in window sizes or use on small screens unless the zoom level is reduced. 
 
 2. Adding a demo to favourites triggers a refresh the current selection of Demos.
@@ -34,6 +35,7 @@ Issues:
 4. At the moment clicking play on another demo while one is already playing results in both songs playing at once. We would hope to implement a fix so that only one song would play at a time. 
 
 Unimplemented features:
+
 1. A feature to allow limited search based on genre was not implemented, but genre preference is stored in the users profile.
 
 2. The ability to change profile details via the change details page was not implemented. Althogh the change details page is present it does not work and clcking any of the buttons returns users to the home page.
